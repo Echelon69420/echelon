@@ -82,15 +82,14 @@ Athletes can join the hardware waitlist and track queue positioning directly ins
 
 ---
 
-## Official Channels
+## Links
 
-Follow Echelon across our dedicated operational divisions:
-
-* **Global & Founder Updates**: [@app_echelon on Twitter / X](https://twitter.com/app_echelon)
-* **Arena & Competition**: [@echelon.red on Instagram](https://instagram.com/echelon.red)
-* **1v1 Duels & Rivalry**: [@echelon.blue on Instagram](https://instagram.com/echelon.blue)
-* **Streaks & Discipline**: [@echelon.yellow on Instagram](https://instagram.com/echelon.yellow)
-* **Solo Protocols & Life Goals**: [@echelon.green on Instagram](https://instagram.com/echelon.green)
+* X: [@app_echelon](https://twitter.com/app_echelon)
+* Instagram:
+  * [@echelon.red](https://instagram.com/echelon.red)
+  * [@echelon.blue](https://instagram.com/echelon.blue)
+  * [@echelon.yellow](https://instagram.com/echelon.yellow)
+  * [@echelon.green](https://instagram.com/echelon.green)
 
 ---
 

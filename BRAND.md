@@ -8,15 +8,14 @@ The Echelon aesthetic reflects brutalist luxury: sharp geometric forms, letterpr
 
 ### The Four Quadrant Brand Matrix
 
-Echelon operates across four distinct discipline channels, each governed by its own colorway, philosophy, and official social presence.
+### Social Channels
 
-| Division | Primary Hex | Focus Area | Official Channel |
-|---|---|---|---|
-| **Echelon Red** | `#C0392B` | Arena competition, high-stakes elimination, and uncompromising urgency | `@echelon.red` on Instagram |
-| **Echelon Blue** | `#1A5FA8` | 1v1 Head-to-head duels, combatant telemetry, and strategic rivalry | `@echelon.blue` on Instagram |
-| **Echelon Yellow** | `#E8A320` | Daily streak momentum, athletic energy, and relentless consistency | `@echelon.yellow` on Instagram |
-| **Echelon Green** | `#27AE60` | Solo discipline, personal life goals, and long-term milestones | `@echelon.green` on Instagram |
-| **Global Flagship** | `#C9A84C` | Product announcements, waitlists, founder tier, and executive updates | `@app_echelon` on Twitter / X |
+* X: [@app_echelon](https://twitter.com/app_echelon)
+* Instagram:
+  * Red: [@echelon.red](https://instagram.com/echelon.red)
+  * Blue: [@echelon.blue](https://instagram.com/echelon.blue)
+  * Yellow: [@echelon.yellow](https://instagram.com/echelon.yellow)
+  * Green: [@echelon.green](https://instagram.com/echelon.green)
 
 ---
 
