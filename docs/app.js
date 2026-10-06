@@ -586,7 +586,7 @@
 
         const commsMsg = document.getElementById('sim-duel-last-msg');
         if (commsMsg) {
-          commsMsg.textContent = '"IRONSIDE_88: Stakes accepted (1 Mo Premium). Day 01 begins now."';
+          commsMsg.textContent = '"IRONSIDE_88: Stakes accepted (Dinner on loser). Day 01 begins now."';
           commsMsg.style.color = '#F7F2E8';
         }
 
