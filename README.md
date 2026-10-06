@@ -1,6 +1,6 @@
 # ECHELON
 
-A competitive discipline engine. Daily protocols, verifiable optical proof, and zero-sum 1v1 duels.
+Discipline tracking and peer competition platform.
 
 ---
 

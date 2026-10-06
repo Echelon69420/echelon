@@ -25,7 +25,7 @@ During proof capture, the application enforces system-level window security poli
 Advanced on-device optical intelligence analyzes camera frames in real time to verify that the capture reflects a live three-dimensional human subject rather than a printed photograph, computer screen, or synthetic projection.
 
 #### 5. Burned Traceable Watermark
-Every captured proof has the athlete handle, UTC timestamp, and gesture badge burned permanently into the image payload. Proof items remain completely traceable to the originator, protecting athlete integrity and community accountability.
+Every captured proof has the athlete handle, UTC timestamp, and gesture badge burned permanently into the image. Proof items remain completely traceable to the originator, protecting athlete integrity and community accountability.
 
 #### 6. Ephemeral 24-Hour Purge
 Echelon is an accountability platform, not an archive. All proof media is automatically and permanently purged from server infrastructure within 24 hours of submission. Your data is never sold, never retained indefinitely, and never converted into a permanent surveillance log.
@@ -36,8 +36,8 @@ Echelon is an accountability platform, not an archive. All proof media is automa
 
 | Classification | Verification Requirement | Failure Condition |
 |---|---|---|
-| **Mandatory Arena Protocol** | Live optical photo + randomized gesture prompt | Automatic elimination from challenge bracket |
-| **1v1 Head-to-Head Duel** | Live photo verification within daily window | Opponent scores win point for the active day |
+| **Mandatory Arena Protocol** | Live optical proof + randomized gesture prompt | Automatic elimination from challenge bracket |
+| **1v1 Head-to-Head Duel** | Live proof verification within daily window | Opponent scores win point for the active day |
 | **Personal Solo Goal** | Optional proof attachment for verified XP multiplier | Base XP awarded without verified authenticity badge |
 
 Authenticity is the foundation of respect. In Echelon, every record is earned.

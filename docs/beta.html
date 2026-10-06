@@ -80,11 +80,11 @@
 
     <div class="legal-content">
       <p>
-        We're inviting a limited group of testers to test Echelon before public release. Test daily protocols, photo proof logging, and 1v1 duels on your device.
+        We're inviting a limited group of testers to test Echelon before public release. Test daily protocols, proof verification, and 1v1 duels on your device.
       </p>
 
       <div class="callout">
-        <p><strong>What to expect:</strong> You'll test real-time photo verification, 1v1 duel matchmaking, and the daily streak engine.</p>
+        <p><strong>What to expect:</strong> You'll test real-time proof verification, 1v1 duel matchmaking, and the daily streak engine.</p>
       </div>
 
       <h2>Request Beta Access</h2>
@@ -93,9 +93,9 @@
       <div id="beta-card" class="card" style="max-width: 540px; margin: 2rem 0; border-color: var(--border-accent);">
         <form id="beta-form" onsubmit="handleBetaSubmit(event)">
           <div class="form-group">
-            <label class="form-label" for="callsign">Username</label>
+            <label class="form-label" for="username">Username</label>
             <span style="display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.4rem; font-family: var(--font-body); text-transform: none; letter-spacing: normal;">Your desired handle or display name in the app.</span>
-            <input type="text" id="callsign" name="callsign" autocomplete="username" placeholder="e.g. alex, shadow, or your name" required class="form-input">
+            <input type="text" id="username" name="username" autocomplete="username" placeholder="e.g. alex, shadow, or your name" required class="form-input">
           </div>
 
           <div class="form-group">
@@ -132,7 +132,7 @@
         <div class="step-num">02</div>
         <div class="step-body">
           <h4>Log Daily Protocols</h4>
-          <p>Complete your chosen protocols, capture authentic photo proof, and build your streak.</p>
+          <p>Complete your chosen protocols, capture authentic proof, and build your streak.</p>
         </div>
       </div>
 
@@ -175,20 +175,20 @@
 
     function handleBetaSubmit(e) {
       e.preventDefault();
-      const callsign = document.getElementById('callsign').value.trim();
+      const username = document.getElementById('username').value.trim();
       const email = document.getElementById('email').value.trim();
       const platform = document.getElementById('platform').value;
 
-      if (!callsign || !email) return;
+      if (!username || !email) return;
 
       const submitBtn = document.getElementById('submit-btn');
       submitBtn.textContent = 'Recording...';
       submitBtn.disabled = true;
 
-      const bodyText = 'Username: ' + callsign + '\nEmail: ' + email + '\nPlatform: ' + platform + '\n\nRequesting access to the Echelon Closed Beta.';
-      const xTweetText = '@app_echelon Requesting Closed Beta access for Username: ' + callsign + ' [' + platform + ']';
+      const bodyText = 'Username: ' + username + '\nEmail: ' + email + '\nPlatform: ' + platform + '\n\nRequesting access to the Echelon Closed Beta.';
+      const xTweetText = '@app_echelon Requesting Closed Beta access for Username: ' + username + ' [' + platform + ']';
       const xPostUrl = 'https://x.com/intent/tweet?text=' + encodeURIComponent(xTweetText);
-      const ghIssueUrl = 'https://github.com/Echelon69420/echelon/issues/new?title=' + encodeURIComponent('Beta Access Request: ' + callsign) + '&body=' + encodeURIComponent(bodyText);
+      const ghIssueUrl = 'https://github.com/Echelon69420/echelon/issues/new?title=' + encodeURIComponent('Beta Access Request: ' + username) + '&body=' + encodeURIComponent(bodyText);
 
       // Auto-copy application details immediately to clipboard
       if (navigator.clipboard) {
@@ -198,14 +198,14 @@
       // Save application locally on device
       try {
         const stored = JSON.parse(localStorage.getItem('echelon_beta_apps') || '[]');
-        stored.push({ callsign: callsign, email: email, platform: platform, date: new Date().toISOString() });
+        stored.push({ username: username, email: email, platform: platform, date: new Date().toISOString() });
         localStorage.setItem('echelon_beta_apps', JSON.stringify(stored));
       } catch (err) {}
 
       // Build email buttons if official email is configured
       let emailButtonsHtml = '';
       if (OFFICIAL_DISPATCH_EMAIL) {
-        const subject = encodeURIComponent('Echelon Beta Access Request — ' + callsign);
+        const subject = encodeURIComponent('Echelon Beta Access Request — ' + username);
         const encodedBody = encodeURIComponent(bodyText);
         const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + OFFICIAL_DISPATCH_EMAIL + '&su=' + subject + '&body=' + encodedBody;
         const mailtoUrl = 'mailto:' + OFFICIAL_DISPATCH_EMAIL + '?subject=' + subject + '&body=' + encodedBody;
@@ -230,10 +230,10 @@
             APPLICATION LOGGED
           </div>
           <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.6;">
-            We've logged your application for <strong style="color: var(--text-primary);">${callsign}</strong>. Send us a message on X or GitHub to receive your beta invite.
+            We've logged your application for <strong style="color: var(--text-primary);">${username}</strong>. Send us a message on X or GitHub to receive your beta invite.
           </p>
           <div class="deboss-well" style="margin-bottom: 1.25rem; text-align: left; font-family: var(--font-display); font-size: 0.88rem; color: var(--text-secondary);">
-            <div>USERNAME: <strong style="color: var(--text-primary);">${callsign}</strong></div>
+            <div>USERNAME: <strong style="color: var(--text-primary);">${username}</strong></div>
             <div>INVITE EMAIL: <strong style="color: var(--text-primary);">${email}</strong></div>
             <div>PLATFORM: <strong style="color: var(--text-primary);">${platform.toUpperCase()}</strong></div>
           </div>

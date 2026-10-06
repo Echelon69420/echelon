@@ -1221,7 +1221,7 @@ button.btn-emboss:active {
 }
 
 /* =============================================================================
-   MECHANICAL SAFETY DEADBOLT SLIDE-TO-CONFIRM
+   SLIDE-TO-CONFIRM JOIN SLIDER
    ============================================================================= */
 .deadbolt-section {
   padding: 4.5rem 1rem;
@@ -1595,7 +1595,7 @@ tr:hover td {
   margin-bottom: 0;
 }
 
-/* Tactical Form Controls */
+/* Form Controls */
 .form-group {
   margin-bottom: 1.4rem;
 }
@@ -2009,7 +2009,7 @@ footer {
     width: 100%;
   }
 
-  /* Mobile Deadbolt & Sandbox */
+  /* Mobile Join Slider & Sandbox */
   .deadbolt-section {
     padding: 3rem 0.5rem;
   }
