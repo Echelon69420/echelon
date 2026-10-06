@@ -30,7 +30,8 @@
           <span class="brand-sub">TACTICAL DISCIPLINE</span>
         </div>
       </a>
-      <nav>
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
         <ul>
           <li><a href="index.html" class="active">Overview</a></li>
           <li><a href="beta.html">Closed Beta</a></li>
@@ -41,6 +42,31 @@
           <li><a href="beta.html" class="nav-cta-btn">Join Beta</a></li>
         </ul>
       </nav>
+
+      <!-- Mobile Header Actions -->
+      <div class="mobile-nav-actions">
+        <a href="beta.html" class="nav-cta-btn mobile-cta">Beta</a>
+        <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle navigation menu" onclick="toggleMobileMenu()">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <ul class="mobile-drawer-links">
+        <li><a href="index.html" class="mobile-link active" onclick="toggleMobileMenu()">Overview</a></li>
+        <li><a href="beta.html" class="mobile-link" onclick="toggleMobileMenu()">Closed Beta</a></li>
+        <li><a href="support.html" class="mobile-link" onclick="toggleMobileMenu()">Support &amp; FAQ</a></li>
+        <li><a href="privacy.html" class="mobile-link" onclick="toggleMobileMenu()">Privacy Policy</a></li>
+        <li><a href="terms.html" class="mobile-link" onclick="toggleMobileMenu()">Terms of Service</a></li>
+        <li><a href="delete-account.html" class="mobile-link" onclick="toggleMobileMenu()">Account Deletion</a></li>
+        <li style="margin-top: 0.5rem;">
+          <a href="beta.html" class="btn btn-red" style="width: 100%; text-align: center; padding: 0.85rem;">Join Closed Beta &rsaquo;</a>
+        </li>
+      </ul>
     </div>
   </header>
 
@@ -366,6 +392,13 @@
   </footer>
 
   <script>
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      const btn = document.getElementById('menu-toggle');
+      drawer.classList.toggle('is-open');
+      btn.classList.toggle('is-active');
+    }
+
     function triggerPlayground(btn, message) {
       const statusEl = document.getElementById('playground-status');
       statusEl.textContent = 'ENGAGED: ' + message;

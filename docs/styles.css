@@ -1239,23 +1239,358 @@ footer {
   text-transform: uppercase;
 }
 
+/* =============================================================================
+   MOBILE NAVIGATION & RESPONSIVE DESIGN (APP-GRADE ERGONOMICS)
+   ============================================================================= */
+.mobile-nav-actions {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mobile-cta {
+  padding: 0.4rem 0.85rem !important;
+  font-size: 0.8rem !important;
+}
+
+.menu-toggle-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-chip);
+  padding: 0.55rem 0.65rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4.5px;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-toggle-btn:active {
+  background: var(--bg-deboss);
+  transform: scale(0.95);
+}
+
+.hamburger-bar {
+  width: 20px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.menu-toggle-btn.is-active .hamburger-bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.menu-toggle-btn.is-active .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle-btn.is-active .hamburger-bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+.mobile-drawer {
+  display: none;
+  background: rgba(14, 14, 14, 0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 1.25rem 1.5rem 1.75rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85);
+  animation: slideDownDrawer 0.2s ease-out;
+}
+
+.mobile-drawer.is-open {
+  display: block;
+}
+
+@keyframes slideDownDrawer {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mobile-drawer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mobile-link {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.65rem 0.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-link:hover, .mobile-link:active {
+  color: var(--text-primary);
+  padding-left: 0.4rem;
+}
+
+.mobile-link.active {
+  color: var(--accent-red);
+  padding-left: 0.4rem;
+}
+
+/* --- MOBILE BREAKPOINT (< 768px) --- */
 @media (max-width: 768px) {
-  nav ul {
-    gap: 1rem;
-    flex-wrap: wrap;
+  .desktop-nav {
+    display: none !important;
   }
-  .hero-title {
-    font-size: 2.6rem;
-    letter-spacing: 0.25em;
+
+  .mobile-nav-actions {
+    display: flex !important;
   }
-  .hero-subtitle {
+
+  .nav-container {
+    padding: 0.75rem 1rem;
+  }
+
+  .brand-text {
     font-size: 1.2rem;
+    letter-spacing: 0.22em;
   }
+
+  .brand-emblem-wrap {
+    width: 32px;
+    height: 32px;
+  }
+
+  .top-ticker {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.76rem;
+    letter-spacing: 0.06em;
+  }
+
+  main {
+    padding: 1.5rem 1rem 3.5rem;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 2.25rem 0.5rem 2.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-emblem-wrap {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 1.35rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.1rem, 9vw, 2.85rem);
+    letter-spacing: 0.16em;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle::before,
+  .hero-subtitle::after {
+    width: 20px;
+  }
+
+  .hero-description {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+    padding: 0 0.25rem;
+  }
+
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
   }
-  .btn {
+
+  .hero-actions .btn {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.98rem;
+  }
+
+  .hero-telemetry {
+    gap: 0.5rem;
+  }
+
+  .telemetry-chip {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+  }
+
+  /* Proof & Device Section */
+  .showcase-section {
+    margin: 3rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 1.75rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    letter-spacing: 0.06em;
+  }
+
+  .section-desc {
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
+  }
+
+  .device-preview-container {
+    flex-direction: column;
+    gap: 1.75rem;
+    margin: 1.75rem 0;
+  }
+
+  .phone-mockup {
+    width: 100%;
+    max-width: 340px;
+    padding: 8px;
+    border-radius: 28px;
+    border-width: 3px;
+  }
+
+  .phone-screen {
+    padding: 1rem 0.85rem 1.25rem;
+    border-radius: 22px;
+    gap: 0.85rem;
+  }
+
+  .viewfinder-box {
+    height: 190px;
+    padding: 0.65rem;
+  }
+
+  .gesture-prompt {
+    font-size: 0.72rem;
+    padding: 0.35rem 0.6rem;
+  }
+
+  .step-card {
+    padding: 1.25rem 1rem;
+    gap: 1rem;
+  }
+
+  .step-num {
+    font-size: 1.75rem;
+  }
+
+  .step-body h4 {
+    font-size: 1.1rem;
+  }
+
+  .step-body p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* Quadrant Grid */
+  .quadrant-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin: 1.75rem 0;
+  }
+
+  .q-card {
+    padding: 1.4rem 1.15rem;
+  }
+
+  .q-title {
+    font-size: 1.3rem;
+  }
+
+  .q-desc {
+    font-size: 0.92rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .q-card .btn {
     width: 100%;
   }
+
+  /* Tactile Playground */
+  .tactile-playground-card {
+    padding: 1.6rem 1.15rem;
+    margin: 2.75rem 0;
+  }
+
+  .tactile-playground-card h3 {
+    font-size: 1.5rem !important;
+  }
+
+  .button-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .button-strip .btn {
+    width: 100%;
+    padding: 0.85rem 0.75rem;
+    font-size: 0.88rem;
+  }
+
+  /* Manifesto */
+  .manifesto-box {
+    padding: 1.5rem 1.2rem;
+    margin: 3rem 0;
+  }
+
+  .manifesto-quote {
+    font-size: 1.15rem;
+    line-height: 1.55;
+  }
+
+  .manifesto-author {
+    font-size: 0.8rem;
+  }
+
+  /* Footer */
+  footer {
+    padding: 2.75rem 1rem 2.25rem;
+  }
+
+  .footer-divisions {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .footer-links {
+    gap: 1rem;
+  }
+
+  .footer-links a {
+    font-size: 0.85rem;
+  }
 }
+

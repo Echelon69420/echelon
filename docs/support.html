@@ -28,7 +28,8 @@
           <span class="brand-sub">TACTICAL DISCIPLINE</span>
         </div>
       </a>
-      <nav>
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
         <ul>
           <li><a href="index.html">Overview</a></li>
           <li><a href="beta.html">Closed Beta</a></li>
@@ -38,6 +39,28 @@
           <li><a href="support.html" class="active">Support</a></li>
         </ul>
       </nav>
+
+      <!-- Mobile Header Actions -->
+      <div class="mobile-nav-actions">
+        <a href="beta.html" class="nav-cta-btn mobile-cta">Beta</a>
+        <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle navigation menu" onclick="toggleMobileMenu()">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <ul class="mobile-drawer-links">
+        <li><a href="index.html" class="mobile-link" onclick="toggleMobileMenu()">Overview</a></li>
+        <li><a href="beta.html" class="mobile-link" onclick="toggleMobileMenu()">Closed Beta</a></li>
+        <li><a href="support.html" class="mobile-link active" onclick="toggleMobileMenu()">Support &amp; FAQ</a></li>
+        <li><a href="privacy.html" class="mobile-link" onclick="toggleMobileMenu()">Privacy Policy</a></li>
+        <li><a href="terms.html" class="mobile-link" onclick="toggleMobileMenu()">Terms of Service</a></li>
+        <li><a href="delete-account.html" class="mobile-link" onclick="toggleMobileMenu()">Account Deletion</a></li>
+      </ul>
     </div>
   </header>
 
@@ -137,5 +160,13 @@
       </div>
     </div>
   </footer>
+  <script>
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      const btn = document.getElementById('menu-toggle');
+      drawer.classList.toggle('is-open');
+      btn.classList.toggle('is-active');
+    }
+  </script>
 </body>
 </html>
