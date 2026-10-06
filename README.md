@@ -27,7 +27,7 @@ A competitive discipline engine. Daily protocols, verifiable optical proof, and 
 
 * **Overview**: [echelon69420.github.io/echelon](https://echelon69420.github.io/echelon/)
 * **Beta**: Closed testing via Google Play & Apple TestFlight.
-* **Dispatch**: `contact@echelon-app.com`
+* **Dispatch**: [X (@app_echelon)](https://x.com/app_echelon)
 
 ---
 

@@ -131,7 +131,7 @@
         <div class="step-num">03</div>
         <div class="step-body">
           <h4>Challenge Others &amp; Send Feedback</h4>
-          <p>Start 1v1 duels against other athletes and report any bugs directly to <code>contact@echelon-app.com</code>.</p>
+          <p>Start 1v1 duels against other athletes and report any bugs directly to <a href="https://x.com/app_echelon" target="_blank" rel="noopener" style="color: var(--accent-red);">@app_echelon on X</a> or open a <a href="https://github.com/Echelon69420/echelon/issues" target="_blank" rel="noopener" style="color: var(--accent-red);">GitHub Issue</a>.</p>
         </div>
       </div>
     </div>
@@ -170,37 +170,18 @@
       if (!callsign || !email) return;
 
       const submitBtn = document.getElementById('submit-btn');
-      submitBtn.textContent = 'Transmitting...';
+      submitBtn.textContent = 'Recording...';
       submitBtn.disabled = true;
 
-      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      const subject = encodeURIComponent('Echelon Beta Access Request — ' + callsign);
       const bodyText = 'Callsign: ' + callsign + '\nEmail: ' + email + '\nPlatform: ' + platform + '\n\nRequesting access to the Echelon Closed Beta.';
-      const body = encodeURIComponent(bodyText);
-      const mailtoUrl = 'mailto:contact@echelon-app.com?subject=' + subject + '&body=' + body;
-      const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=contact@echelon-app.com&su=' + subject + '&body=' + body;
-      const outlookUrl = 'https://outlook.live.com/mail/0/deeplink/compose?to=contact@echelon-app.com&subject=' + subject + '&body=' + body;
+      const ghIssueUrl = 'https://github.com/Echelon69420/echelon/issues/new?title=' + encodeURIComponent('Beta Access Request: ' + callsign) + '&body=' + encodeURIComponent(bodyText);
 
-      // Background submission
+      // Save application locally
       try {
-        fetch('https://formsubmit.co/ajax/contact@echelon-app.com', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({
-            callsign: callsign,
-            email: email,
-            platform: platform,
-            _subject: 'Echelon Beta Access Request — ' + callsign
-          })
-        }).catch(() => {});
+        const stored = JSON.parse(localStorage.getItem('echelon_beta_apps') || '[]');
+        stored.push({ callsign: callsign, email: email, platform: platform, date: new Date().toISOString() });
+        localStorage.setItem('echelon_beta_apps', JSON.stringify(stored));
       } catch (err) {}
-
-      // On mobile devices, launch email client prefilled
-      if (isMobile) {
-        setTimeout(() => {
-          window.location.href = mailtoUrl;
-        }, 300);
-      }
 
       // Render verified confirmation card
       const card = document.getElementById('beta-card');
@@ -208,22 +189,22 @@
         <div style="text-align: center; padding: 1.5rem 0.5rem;">
           <div style="color: var(--accent-green); font-size: 2.4rem; margin-bottom: 0.5rem;">✓</div>
           <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-primary); margin-bottom: 0.4rem;">
-            REQUEST RECORDED
+            APPLICATION LOGGED
           </div>
-          <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.6;">
-            We've logged your application for Callsign <strong style="color: var(--text-primary);">${callsign}</strong>. Your invite will be routed to <strong style="color: var(--text-primary);">${email}</strong>.
+          <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.6;">
+            We've logged your application for Callsign <strong style="color: var(--text-primary);">${callsign}</strong>. Message us directly on X or open a GitHub ticket to verify your invite.
           </p>
-          <div class="deboss-well" style="margin-bottom: 1.5rem; text-align: left; font-family: var(--font-display); font-size: 0.88rem; color: var(--text-secondary);">
+          <div class="deboss-well" style="margin-bottom: 1.25rem; text-align: left; font-family: var(--font-display); font-size: 0.88rem; color: var(--text-secondary);">
             <div>CALLSIGN: <strong style="color: var(--text-primary);">${callsign}</strong></div>
             <div>EMAIL: <strong style="color: var(--text-primary);">${email}</strong></div>
             <div>PLATFORM: <strong style="color: var(--accent-red);">${platform.toUpperCase()}</strong></div>
           </div>
           <div style="display: flex; gap: 0.65rem; justify-content: center; flex-wrap: wrap;">
-            <a href="${gmailUrl}" target="_blank" rel="noopener" class="btn btn-red" style="padding: 0.75rem 1.25rem; font-size: 0.88rem;">
-              Open in Gmail &rsaquo;
+            <a href="https://x.com/app_echelon" target="_blank" rel="noopener" class="btn btn-red" style="padding: 0.75rem 1.25rem; font-size: 0.88rem;">
+              DM @app_echelon on X &rsaquo;
             </a>
-            <a href="${outlookUrl}" target="_blank" rel="noopener" class="btn btn-blue" style="padding: 0.75rem 1.25rem; font-size: 0.88rem;">
-              Outlook Web &rsaquo;
+            <a href="${ghIssueUrl}" target="_blank" rel="noopener" class="btn btn-blue" style="padding: 0.75rem 1.25rem; font-size: 0.88rem;">
+              Open GitHub Issue &rsaquo;
             </a>
             <button class="btn btn-emboss" style="padding: 0.75rem 1.25rem; font-size: 0.88rem;" onclick="navigator.clipboard.writeText('${bodyText.replace(/\n/g, '\\n')}'); this.textContent = 'Copied!';">
               Copy Details
