@@ -161,6 +161,9 @@
       btn.classList.toggle('is-active');
     }
 
+    // Optional configured support/beta email (populate when official email is ready)
+    const OFFICIAL_DISPATCH_EMAIL = ''; 
+
     function handleBetaSubmit(e) {
       e.preventDefault();
       const callsign = document.getElementById('callsign').value.trim();
@@ -174,14 +177,38 @@
       submitBtn.disabled = true;
 
       const bodyText = 'Callsign: ' + callsign + '\nEmail: ' + email + '\nPlatform: ' + platform + '\n\nRequesting access to the Echelon Closed Beta.';
+      const xTweetText = '@app_echelon Requesting Closed Beta access for Callsign: ' + callsign + ' [' + platform + ']';
+      const xPostUrl = 'https://x.com/intent/tweet?text=' + encodeURIComponent(xTweetText);
       const ghIssueUrl = 'https://github.com/Echelon69420/echelon/issues/new?title=' + encodeURIComponent('Beta Access Request: ' + callsign) + '&body=' + encodeURIComponent(bodyText);
 
-      // Save application locally
+      // Auto-copy application details immediately to clipboard
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(bodyText).catch(() => {});
+      }
+
+      // Save application locally on device
       try {
         const stored = JSON.parse(localStorage.getItem('echelon_beta_apps') || '[]');
         stored.push({ callsign: callsign, email: email, platform: platform, date: new Date().toISOString() });
         localStorage.setItem('echelon_beta_apps', JSON.stringify(stored));
       } catch (err) {}
+
+      // Build email buttons if official email is configured
+      let emailButtonsHtml = '';
+      if (OFFICIAL_DISPATCH_EMAIL) {
+        const subject = encodeURIComponent('Echelon Beta Access Request — ' + callsign);
+        const encodedBody = encodeURIComponent(bodyText);
+        const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + OFFICIAL_DISPATCH_EMAIL + '&su=' + subject + '&body=' + encodedBody;
+        const mailtoUrl = 'mailto:' + OFFICIAL_DISPATCH_EMAIL + '?subject=' + subject + '&body=' + encodedBody;
+        emailButtonsHtml = `
+          <a href="${gmailUrl}" target="_blank" rel="noopener" class="btn btn-red" style="padding: 0.75rem 1.25rem; font-size: 0.88rem;">
+            Open in Gmail &rsaquo;
+          </a>
+          <a href="${mailtoUrl}" class="btn btn-emboss" style="padding: 0.75rem 1.25rem; font-size: 0.88rem;">
+            Default Email App &rsaquo;
+          </a>
+        `;
+      }
 
       // Render verified confirmation card
       const card = document.getElementById('beta-card');
@@ -192,7 +219,7 @@
             APPLICATION LOGGED
           </div>
           <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.6;">
-            We've logged your application for Callsign <strong style="color: var(--text-primary);">${callsign}</strong>. Message us directly on X or open a GitHub ticket to verify your invite.
+            We've logged your application for Callsign <strong style="color: var(--text-primary);">${callsign}</strong>. Transmit your handle via X or GitHub to finalize provisioning.
           </p>
           <div class="deboss-well" style="margin-bottom: 1.25rem; text-align: left; font-family: var(--font-display); font-size: 0.88rem; color: var(--text-secondary);">
             <div>CALLSIGN: <strong style="color: var(--text-primary);">${callsign}</strong></div>
@@ -200,18 +227,33 @@
             <div>PLATFORM: <strong style="color: var(--accent-red);">${platform.toUpperCase()}</strong></div>
           </div>
           <div style="display: flex; gap: 0.65rem; justify-content: center; flex-wrap: wrap;">
-            <a href="https://x.com/app_echelon" target="_blank" rel="noopener" class="btn btn-red" style="padding: 0.75rem 1.25rem; font-size: 0.88rem;">
+            <a href="${xPostUrl}" target="_blank" rel="noopener" class="btn btn-red" style="padding: 0.75rem 1.25rem; font-size: 0.88rem;">
+              Post on X (Auto-Filled) &rsaquo;
+            </a>
+            <button class="btn btn-emboss" style="padding: 0.75rem 1.25rem; font-size: 0.88rem;" onclick="dispatchXDm('${bodyText.replace(/\n/g, '\\n')}');">
               DM @app_echelon on X &rsaquo;
-            </a>
-            <a href="${ghIssueUrl}" target="_blank" rel="noopener" class="btn btn-blue" style="padding: 0.75rem 1.25rem; font-size: 0.88rem;">
-              Open GitHub Issue &rsaquo;
-            </a>
-            <button class="btn btn-emboss" style="padding: 0.75rem 1.25rem; font-size: 0.88rem;" onclick="navigator.clipboard.writeText('${bodyText.replace(/\n/g, '\\n')}'); this.textContent = 'Copied!';">
-              Copy Details
             </button>
+            <a href="${ghIssueUrl}" target="_blank" rel="noopener" class="btn btn-blue" style="padding: 0.75rem 1.25rem; font-size: 0.88rem;">
+              GitHub Ticket &rsaquo;
+            </a>
+            ${emailButtonsHtml}
+          </div>
+          <div id="dm-status-msg" style="display: none; color: var(--accent-green); font-size: 0.82rem; margin-top: 0.85rem; font-family: var(--font-display); letter-spacing: 0.05em;">
+            ✓ DETAILS COPIED TO CLIPBOARD — PASTE DIRECTLY INTO YOUR MESSAGE!
           </div>
         </div>
       `;
+    }
+
+    function dispatchXDm(text) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).catch(() => {});
+      }
+      const msg = document.getElementById('dm-status-msg');
+      if (msg) {
+        msg.style.display = 'block';
+      }
+      window.open('https://x.com/app_echelon', '_blank', 'noopener,noreferrer');
     }
   </script>
 </body>
