@@ -1,7 +1,5 @@
 # ECHELON
 
-> Proof over promises.
-
 A competitive discipline engine. Daily protocols, verifiable optical proof, and zero-sum 1v1 duels.
 
 ---
