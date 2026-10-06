@@ -586,12 +586,12 @@
 
         const commsMsg = document.getElementById('sim-duel-last-msg');
         if (commsMsg) {
-          commsMsg.textContent = '"IRONSIDE_88: Challenge locked. Day 01 begins now."';
+          commsMsg.textContent = '"IRONSIDE_88: Stakes accepted (1 Mo Premium). Day 01 begins now."';
           commsMsg.style.color = '#F7F2E8';
         }
 
         setTimeout(() => {
-          celebration.show(30, 'DUEL CONTRACT LOCKED', '1V1 COMBATANT VS IRONSIDE_88');
+          celebration.show(30, 'DUEL STAKES LOCKED · REWARD AT RISK', '1V1 COMBATANT VS IRONSIDE_88');
           btn.disabled = false;
           btn.textContent = 'ISSUE 1V1 CHALLENGE';
           btn.style.background = '';
