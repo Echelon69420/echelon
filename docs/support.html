@@ -7,13 +7,20 @@
   <meta name="description" content="Technical support, contact channels, and dispute resolution for Echelon.">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/jpeg" href="images/logo_3d_leather_red.jpg">
+  <script src="app.js" defer></script>
 </head>
 <body>
   <!-- Announcement Bar -->
   <div class="top-ticker">
-    <div class="ticker-content">
-      <span class="beacon-dot"></span>
-      <span class="ticker-announcement">Support & Member Inquiries: Direct Message @app_echelon on X &bull; GitHub Issues</span>
+    <div class="ticker-content" style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <span class="beacon-dot"></span>
+        <span class="ticker-announcement">Support & Member Inquiries: Direct Message @app_echelon on X &bull; GitHub Issues</span>
+      </div>
+      <button id="sfx-toggle" class="sfx-toggle-pill" aria-label="Toggle Foley sound effects">
+        <span class="sfx-icon">&#128266;</span>
+        <span class="sfx-text">SFX ON</span>
+      </button>
     </div>
   </div>
 
