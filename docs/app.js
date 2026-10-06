@@ -566,7 +566,7 @@
 
       if (completed === total) {
         setTimeout(() => {
-          celebration.show(25, 'ALL DAILY PROTOCOLS COMPLETE', 'SOLO DISCIPLINE');
+          celebration.show(25, 'ALL DAILY HABITS COMPLETE', 'SOLO HABITS');
         }, 300);
       }
     }
@@ -590,7 +590,7 @@
         }
 
         setTimeout(() => {
-          celebration.show(30, 'DUEL STAKES LOCKED · REWARD AT RISK', '1V1 COMBATANT VS IRONSIDE_88');
+          celebration.show(30, 'DUEL STAKES LOCKED · REWARD AT RISK', '1V1 DUEL VS IRONSIDE_88');
           btn.disabled = false;
           btn.textContent = 'ISSUE 1V1 CHALLENGE';
           btn.style.background = '';

@@ -1,32 +1,32 @@
-# ECHELON
+# Echelon
 
-Discipline tracking and peer competition platform.
+Competitive discipline and habit tracking platform.
 
 ---
 
-### Operations
+### Features
 
-* **Arena**: Daily elimination protocols. Miss the window or fail verification, you are removed.
-* **1v1 Duels**: Synchronized head-to-head showdowns. Winner takes the standing.
-* **Life Goals**: Long-range personal standards tracked in canonical units.
+- **Arena**: Daily elimination challenges with live leaderboard rankings.
+- **1v1 Duels**: Head-to-head competitions with custom creator rewards.
+- **Solo Habits**: Personal consistency tracking with verified progress.
+- **Life Goals**: Goal breakdown and milestone tracking.
 
 ---
 
 ### Verification
 
-* Live optical capture only. Zero gallery imports.
-* Dynamic gesture challenges to defeat synthetic media.
-* Indelible cryptographic timestamp burned at capture.
-* All proof media permanently purged within 24 hours.
+- Live camera capture with dynamic gesture checks.
+- Username and timestamp watermark.
+- Ephemeral 24-hour media purge.
 
 ---
 
-### Access
+### Links
 
-* **Overview**: [echelon69420.github.io/echelon](https://echelon69420.github.io/echelon/)
-* **Beta**: Closed testing via Google Play & Apple TestFlight.
-* **Dispatch**: [X (@app_echelon)](https://x.com/app_echelon)
+- **Website**: [echelon69420.github.io](https://echelon69420.github.io/)
+- **Beta Access**: [echelon69420.github.io/beta.html](https://echelon69420.github.io/beta.html)
+- **Updates**: [X (@app_echelon)](https://x.com/app_echelon)
 
 ---
 
-<sub>&copy; 2026 ECHELON</sub>
+<sub>&copy; 2026 Echelon</sub>

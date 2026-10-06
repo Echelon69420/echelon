@@ -975,6 +975,7 @@ button.btn-emboss:active {
 }
 
 /* 1v1 Duels Screen inside Phone */
+.sim-duelist-avatar,
 .sim-combatant-avatar {
   width: 44px;
   height: 44px;
@@ -986,7 +987,9 @@ button.btn-emboss:active {
   font-weight: 900;
   font-size: 1.3rem;
 }
+.sim-duelist-avatar.red,
 .sim-combatant-avatar.red { background: rgba(192, 57, 43, 0.22); color: var(--accent-red); border: 2px solid var(--accent-red); }
+.sim-duelist-avatar.blue,
 .sim-combatant-avatar.blue { background: rgba(26, 95, 168, 0.22); color: var(--accent-blue); border: 2px solid var(--accent-blue); }
 
 .sim-radar-wave {
