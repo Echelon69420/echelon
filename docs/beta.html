@@ -18,7 +18,7 @@
         <span class="ticker-announcement">Closed Beta Now Open for Android &amp; iOS</span>
       </div>
       <button id="sfx-toggle" class="sfx-toggle-pill" aria-label="Toggle Foley sound effects">
-        <span class="sfx-icon">&#128266;</span>
+        <svg class="sfx-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
         <span class="sfx-text">SFX ON</span>
       </button>
     </div>
@@ -223,7 +223,9 @@
       const card = document.getElementById('beta-card');
       card.innerHTML = `
         <div style="text-align: center; padding: 1.5rem 0.5rem;">
-          <div style="color: var(--accent-green); font-size: 2.4rem; margin-bottom: 0.5rem;">✓</div>
+          <div style="display: flex; justify-content: center; margin-bottom: 0.75rem;">
+            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
           <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-primary); margin-bottom: 0.4rem;">
             APPLICATION LOGGED
           </div>
@@ -248,7 +250,7 @@
             ${emailButtonsHtml}
           </div>
           <div id="dm-status-msg" style="display: none; color: var(--accent-green); font-size: 0.82rem; margin-top: 0.85rem; font-family: var(--font-display); letter-spacing: 0.05em;">
-            ✓ DETAILS COPIED TO CLIPBOARD — PASTE DIRECTLY INTO YOUR MESSAGE!
+            DETAILS COPIED TO CLIPBOARD — PASTE DIRECTLY INTO YOUR MESSAGE!
           </div>
         </div>
       `;

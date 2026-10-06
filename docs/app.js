@@ -136,11 +136,11 @@
       if (this.isMuted) {
         btn.classList.add('is-muted');
         btn.setAttribute('aria-label', 'Unmute tactile sound effects');
-        btn.innerHTML = `<span class="sfx-icon">&#128263;</span><span class="sfx-text">SFX OFF</span>`;
+        btn.innerHTML = `<svg class="sfx-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg><span class="sfx-text">SFX OFF</span>`;
       } else {
         btn.classList.remove('is-muted');
         btn.setAttribute('aria-label', 'Mute tactile sound effects');
-        btn.innerHTML = `<span class="sfx-icon">&#128266;</span><span class="sfx-text">SFX ON</span>`;
+        btn.innerHTML = `<svg class="sfx-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg><span class="sfx-text">SFX ON</span>`;
       }
     }
   }
@@ -307,11 +307,11 @@
   // 3. PLAYABLE PHONE SIMULATOR SANDBOX
   // =========================================================================
   const GESTURE_CHALLENGES = [
-    { text: 'GESTURE: TWO FINGERS UP ✌️', limit: '00:04' },
-    { text: 'GESTURE: TOUCH LEFT EAR 👂', limit: '00:03' },
-    { text: 'GESTURE: THUMBS UP DIRECT 👍', limit: '00:05' },
-    { text: 'GESTURE: CLENCHED FIST ✊', limit: '00:04' },
-    { text: 'GESTURE: TOUCH CHIN 🖐️', limit: '00:03' }
+    { text: 'GESTURE: TWO FINGERS UP', limit: '00:04' },
+    { text: 'GESTURE: TOUCH LEFT EAR', limit: '00:03' },
+    { text: 'GESTURE: THUMBS UP DIRECT', limit: '00:05' },
+    { text: 'GESTURE: CLENCHED FIST', limit: '00:04' },
+    { text: 'GESTURE: TOUCH CHIN', limit: '00:03' }
   ];
 
   class PhoneSimulator {
@@ -529,7 +529,7 @@
       // 4. Verification delay matching mobile app
       setTimeout(() => {
         if (statusBadge) {
-          statusBadge.textContent = '✓ CRYPTOGRAPHICALLY CONFIRMED';
+          statusBadge.textContent = 'CRYPTOGRAPHICALLY CONFIRMED';
           statusBadge.className = 'sim-status-badge status-verified';
         }
         foley.playLatch();
@@ -717,7 +717,7 @@
 
       this.track.classList.add('confirmed');
       if (this.label) {
-        this.label.textContent = '✓ ACCESS GRANTED // DEADBOLT LOCKED';
+        this.label.textContent = 'ACCESS GRANTED // DEADBOLT LOCKED';
         this.label.style.color = 'var(--text-primary)';
       }
 
