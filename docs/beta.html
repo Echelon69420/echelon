@@ -86,13 +86,15 @@
       <div id="beta-card" class="card" style="max-width: 540px; margin: 2rem 0; border-color: var(--border-accent);">
         <form id="beta-form" onsubmit="handleBetaSubmit(event)">
           <div class="form-group">
-            <label class="form-label" for="callsign">Callsign / Username</label>
-            <input type="text" id="callsign" name="callsign" autocomplete="username" placeholder="e.g. VANGUARD" required class="form-input">
+            <label class="form-label" for="callsign">Username</label>
+            <span style="display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.4rem; font-family: var(--font-body); text-transform: none; letter-spacing: normal;">Your desired handle or display name in the app.</span>
+            <input type="text" id="callsign" name="callsign" autocomplete="username" placeholder="e.g. alex, shadow, or your name" required class="form-input">
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email" placeholder="your@email.com" required class="form-input">
+            <label class="form-label" for="email">Email for Invite</label>
+            <span style="display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.4rem; font-family: var(--font-body); text-transform: none; letter-spacing: normal;">The email tied to your Google Play or Apple ID where we'll deliver your test build.</span>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="you@gmail.com" required class="form-input">
           </div>
 
           <div class="form-group">
@@ -176,8 +178,8 @@
       submitBtn.textContent = 'Recording...';
       submitBtn.disabled = true;
 
-      const bodyText = 'Callsign: ' + callsign + '\nEmail: ' + email + '\nPlatform: ' + platform + '\n\nRequesting access to the Echelon Closed Beta.';
-      const xTweetText = '@app_echelon Requesting Closed Beta access for Callsign: ' + callsign + ' [' + platform + ']';
+      const bodyText = 'Username: ' + callsign + '\nEmail: ' + email + '\nPlatform: ' + platform + '\n\nRequesting access to the Echelon Closed Beta.';
+      const xTweetText = '@app_echelon Requesting Closed Beta access for Username: ' + callsign + ' [' + platform + ']';
       const xPostUrl = 'https://x.com/intent/tweet?text=' + encodeURIComponent(xTweetText);
       const ghIssueUrl = 'https://github.com/Echelon69420/echelon/issues/new?title=' + encodeURIComponent('Beta Access Request: ' + callsign) + '&body=' + encodeURIComponent(bodyText);
 
@@ -219,11 +221,11 @@
             APPLICATION LOGGED
           </div>
           <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.6;">
-            We've logged your application for Callsign <strong style="color: var(--text-primary);">${callsign}</strong>. Transmit your handle via X or GitHub to finalize provisioning.
+            We've logged your application for <strong style="color: var(--text-primary);">${callsign}</strong>. Transmit your handle via X or GitHub to finalize provisioning.
           </p>
           <div class="deboss-well" style="margin-bottom: 1.25rem; text-align: left; font-family: var(--font-display); font-size: 0.88rem; color: var(--text-secondary);">
-            <div>CALLSIGN: <strong style="color: var(--text-primary);">${callsign}</strong></div>
-            <div>EMAIL: <strong style="color: var(--text-primary);">${email}</strong></div>
+            <div>USERNAME: <strong style="color: var(--text-primary);">${callsign}</strong></div>
+            <div>INVITE EMAIL: <strong style="color: var(--text-primary);">${email}</strong></div>
             <div>PLATFORM: <strong style="color: var(--accent-red);">${platform.toUpperCase()}</strong></div>
           </div>
           <div style="display: flex; gap: 0.65rem; justify-content: center; flex-wrap: wrap;">
