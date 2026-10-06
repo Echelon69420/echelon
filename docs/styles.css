@@ -698,49 +698,160 @@ button.btn-emboss:active {
   flex-wrap: wrap;
 }
 
+/* =============================================================================
+   INTERACTIVE PHONE SANDBOX & MULTI-SCREEN STYLES
+   ============================================================================= */
+.sandbox-section {
+  padding: 4.5rem 1rem 3rem;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.sandbox-tab-bar {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2.25rem 0 2.75rem;
+  flex-wrap: wrap;
+}
+
+.sandbox-tab {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-chip);
+  padding: 0.75rem 1.4rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: inset 0 1px 0 var(--border-top-highlight);
+}
+.sandbox-tab:hover {
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+.sandbox-tab[data-mode="arena"].active {
+  background: rgba(192, 57, 43, 0.22);
+  border-color: var(--accent-red);
+  color: #fff;
+  box-shadow: 0 0 24px rgba(192, 57, 43, 0.45);
+}
+.sandbox-tab[data-mode="duels"].active {
+  background: rgba(26, 95, 168, 0.22);
+  border-color: var(--accent-blue);
+  color: #fff;
+  box-shadow: 0 0 24px rgba(26, 95, 168, 0.45);
+}
+.sandbox-tab[data-mode="goals"].active {
+  background: rgba(39, 174, 96, 0.22);
+  border-color: var(--accent-green);
+  color: #fff;
+  box-shadow: 0 0 24px rgba(39, 174, 96, 0.45);
+}
+.sandbox-tab[data-mode="gold"].active {
+  background: rgba(201, 168, 76, 0.22);
+  border-color: var(--accent-gold);
+  color: #fff;
+  box-shadow: 0 0 24px rgba(201, 168, 76, 0.45);
+}
+
+.sandbox-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+/* Phone Mockup Frame */
 .phone-mockup {
-  width: 320px;
-  background: var(--bg-outer);
-  border-radius: 36px;
+  width: 350px;
+  max-width: 100%;
+  background: #080808;
+  border-radius: 42px;
   border: 4px solid #282828;
   box-shadow: 
-    0 25px 60px rgba(0, 0, 0, 0.9),
-    0 0 40px rgba(192, 57, 43, 0.25),
+    0 35px 80px rgba(0, 0, 0, 0.95),
+    0 0 50px rgba(192, 57, 43, 0.2),
     inset 0 0 0 2px rgba(255, 255, 255, 0.08);
   padding: 12px;
   position: relative;
   overflow: hidden;
+  user-select: none;
+  transition: box-shadow 0.3s ease;
 }
 
 .phone-screen {
   background: var(--bg-primary);
-  border-radius: 26px;
-  padding: 1.25rem 1rem 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 32px;
+  padding: 1.15rem 1.05rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.85rem;
+  min-height: 540px;
+  position: relative;
+  overflow: hidden;
 }
 
 .phone-notch {
-  width: 100px;
+  width: 96px;
   height: 18px;
-  background: var(--bg-outer);
+  background: #080808;
   border-radius: 0 0 12px 12px;
-  margin: -1.25rem auto 0.5rem;
+  margin: -1.15rem auto 0.4rem;
+  border: 1px solid #1c1c1c;
+  border-top: none;
+}
+
+.sim-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.55);
+  padding: 0 0.4rem 0.2rem;
+  letter-spacing: 0.06em;
+}
+
+.phone-screen-view {
+  display: none;
+  flex-direction: column;
+  gap: 0.85rem;
+  flex: 1;
+  animation: fadeInPhone 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.phone-screen-view.active {
+  display: flex;
+}
+
+@keyframes fadeInPhone {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .phone-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.65rem;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .phone-title {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -748,22 +859,39 @@ button.btn-emboss:active {
 
 .phone-streak {
   font-family: var(--font-display);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 800;
   color: var(--accent-yellow);
 }
 
+/* Viewfinder & Flash */
+.camera-flash-overlay {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 90;
+  border-radius: 32px;
+  transition: opacity 0.05s ease-out;
+}
+.camera-flash-overlay.flash-active {
+  opacity: 0.95;
+  transition: none;
+}
+
 .viewfinder-box {
-  background: #0a0a0a;
+  background: #090909;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-well);
-  height: 220px;
+  height: 235px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 0.85rem;
-  box-shadow: inset 0 2px 10px rgba(0,0,0,0.8);
+  box-shadow: inset 0 2px 14px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
 }
 
 .viewfinder-corner {
@@ -771,31 +899,49 @@ button.btn-emboss:active {
   width: 14px;
   height: 14px;
   border-color: var(--accent-red);
+  z-index: 2;
 }
 .tl { top: 8px; left: 8px; border-top: 2px solid var(--accent-red); border-left: 2px solid var(--accent-red); }
 .tr { top: 8px; right: 8px; border-top: 2px solid var(--accent-red); border-right: 2px solid var(--accent-red); }
 .bl { bottom: 8px; left: 8px; border-bottom: 2px solid var(--accent-red); border-left: 2px solid var(--accent-red); }
 .br { bottom: 8px; right: 8px; border-bottom: 2px solid var(--accent-red); border-right: 2px solid var(--accent-red); }
 
+.scanner-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(192, 57, 43, 0.8), transparent);
+  box-shadow: 0 0 10px var(--accent-red);
+  z-index: 1;
+  animation: scanSweep 2s ease-in-out infinite alternate;
+}
+@keyframes scanSweep {
+  0% { top: 12%; }
+  100% { top: 88%; }
+}
+
 .gesture-prompt {
-  background: rgba(192, 57, 43, 0.9);
+  background: rgba(192, 57, 43, 0.92);
   padding: 0.4rem 0.75rem;
   border-radius: var(--radius-chip);
   font-family: var(--font-display);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #fff;
   text-align: center;
   align-self: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  z-index: 2;
 }
 
 .camera-controls-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 2;
 }
 
 .cam-switch-pill {
@@ -803,22 +949,120 @@ button.btn-emboss:active {
   border-radius: var(--radius-pill);
   padding: 0.25rem 0.65rem;
   font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   color: var(--text-primary);
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .watermark-text {
   font-family: var(--font-display);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.55);
 }
 
+.sim-status-badge {
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-chip);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.status-ready { background: rgba(39, 174, 96, 0.15); color: var(--accent-green); border: 1px solid var(--accent-green); }
+.status-verifying { background: rgba(232, 163, 32, 0.15); color: var(--accent-yellow); border: 1px solid var(--accent-yellow); animation: pulseVerify 0.8s infinite alternate; }
+.status-verified { background: rgba(39, 174, 96, 0.25); color: #fff; border: 1px solid var(--accent-green); }
+
+@keyframes pulseVerify {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
+/* 1v1 Duels Screen inside Phone */
+.sim-combatant-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.3rem;
+}
+.sim-combatant-avatar.red { background: rgba(192, 57, 43, 0.22); color: var(--accent-red); border: 2px solid var(--accent-red); }
+.sim-combatant-avatar.blue { background: rgba(26, 95, 168, 0.22); color: var(--accent-blue); border: 2px solid var(--accent-blue); }
+
+.sim-radar-wave {
+  width: 100%;
+  height: 2px;
+  background: var(--accent-blue);
+  box-shadow: 0 0 12px var(--accent-blue);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.sim-radar-wave.radar-active {
+  opacity: 1;
+  animation: radarPulse 0.7s infinite alternate;
+}
+@keyframes radarPulse {
+  from { box-shadow: 0 0 4px var(--accent-blue); }
+  to { box-shadow: 0 0 20px var(--accent-blue); }
+}
+
+/* Goals Checklist inside Phone */
+.sim-goal-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  background: var(--bg-deboss);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-well);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.sim-goal-row:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: #1c1c1c;
+}
+.sim-check-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1.5px solid var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+.sim-check-box.checked {
+  background: var(--accent-green);
+  border-color: var(--accent-green);
+  box-shadow: 0 0 10px rgba(39, 174, 96, 0.5);
+}
+
+/* Right Column: Mode Telemetry Pane */
 .showcase-details {
   max-width: 480px;
+  flex: 1;
+}
+
+.mode-detail-pane {
+  display: none;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: fadeInPhone 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mode-detail-pane.active {
+  display: flex;
 }
 
 /* =============================================================================
@@ -948,63 +1192,234 @@ button.btn-emboss:active {
 }
 
 /* =============================================================================
-   TACTILE CONTROL PLAYGROUND (INTERACTIVE BUTTONS)
+   SFX AUDIO TOGGLE PILL
    ============================================================================= */
-.tactile-playground-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-card);
-  padding: 2.5rem;
-  margin: 4rem 0;
-  box-shadow: 
-    0 16px 36px rgba(0,0,0,0.6),
-    inset 0 1px 0 var(--border-top-highlight);
-  text-align: center;
-}
-
-.button-strip {
-  display: flex;
-  justify-content: center;
+.sfx-toggle-pill {
+  display: inline-flex;
   align-items: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  margin: 2rem 0 1.5rem;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-pill);
+  padding: 0.35rem 0.85rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.sfx-toggle-pill:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.sfx-toggle-pill.is-muted {
+  color: var(--text-muted);
+  border-color: rgba(255, 255, 255, 0.06);
 }
 
 /* =============================================================================
-   MANIFESTO HARD QUOTE
+   MECHANICAL SAFETY DEADBOLT SLIDE-TO-CONFIRM
    ============================================================================= */
-.manifesto-box {
-  background: var(--bg-deboss);
-  border: 1px solid rgba(192, 57, 43, 0.35);
-  border-left: 4px solid var(--accent-red);
+.deadbolt-section {
+  padding: 4.5rem 1rem;
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.deadbolt-container {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-card);
-  padding: 2.25rem 2.5rem;
-  margin: 4.5rem 0;
+  padding: 2.25rem 2rem 2.5rem;
   box-shadow: 
-    inset 0 2px 10px rgba(0, 0, 0, 0.8),
-    0 8px 24px rgba(0, 0, 0, 0.6);
+    0 20px 48px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 var(--border-top-highlight);
   position: relative;
 }
 
-.manifesto-quote {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1.5;
-  color: var(--text-primary);
-  text-transform: uppercase;
-  margin-bottom: 1rem;
+.deadbolt-track {
+  position: relative;
+  height: 64px;
+  background: #0d0d0d;
+  border: 2px solid #222222;
+  border-radius: var(--radius-pill);
+  box-shadow: 
+    inset 0 4px 14px rgba(0, 0, 0, 0.9),
+    0 1px 0 rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  margin: 2rem 0 1.25rem;
+  user-select: none;
+  touch-action: none;
+  cursor: grab;
+  overflow: hidden;
+}
+.deadbolt-track.active {
+  cursor: grabbing;
+  border-color: rgba(192, 57, 43, 0.5);
+  box-shadow: 
+    inset 0 4px 14px rgba(0, 0, 0, 0.9),
+    0 0 25px rgba(192, 57, 43, 0.35);
+}
+.deadbolt-track.confirmed {
+  border-color: var(--accent-green);
+  box-shadow: 
+    inset 0 4px 14px rgba(0, 0, 0, 0.9),
+    0 0 35px rgba(39, 174, 96, 0.5);
 }
 
-.manifesto-author {
+.deadbolt-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  background: linear-gradient(90deg, rgba(192, 57, 43, 0.4), rgba(192, 57, 43, 0.85));
+  border-radius: var(--radius-pill);
+  pointer-events: none;
+}
+.deadbolt-track.confirmed .deadbolt-fill {
+  background: linear-gradient(90deg, rgba(39, 174, 96, 0.4), rgba(39, 174, 96, 0.85));
+}
+
+.deadbolt-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 800;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent-red);
+  color: var(--text-primary);
+  opacity: 0.75;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.deadbolt-knob {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e74c3c 0%, #962d22 100%);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 
+    0 6px 18px rgba(0, 0, 0, 0.7),
+    inset 0 2px 2px rgba(255, 255, 255, 0.5),
+    inset 0 -3px 3px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: #fff;
+  position: relative;
+  z-index: 5;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  flex-shrink: 0;
+}
+.deadbolt-knob:active,
+.deadbolt-knob.dragging {
+  cursor: grabbing;
+  transform: scale(0.96);
+  box-shadow: 
+    0 3px 10px rgba(0, 0, 0, 0.8),
+    inset 0 2px 2px rgba(255, 255, 255, 0.6);
+}
+.deadbolt-track.confirmed .deadbolt-knob {
+  background: linear-gradient(135deg, #2ecc71 0%, #1e824c 100%);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* =============================================================================
+   APP-GRADE XP CELEBRATION MODAL OVERLAY
+   ============================================================================= */
+.xp-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.xp-modal.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#xp-confetti-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.xp-modal-card {
+  position: relative;
+  z-index: 2;
+  background: var(--bg-surface);
+  border: 2px solid var(--accent-gold);
+  border-radius: var(--radius-card);
+  padding: 2.75rem 2.25rem;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 
+    0 25px 70px rgba(0, 0, 0, 0.9),
+    0 0 50px rgba(201, 168, 76, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: scale(0.92);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.xp-modal.is-active .xp-modal-card {
+  transform: scale(1);
+}
+
+.xp-crown-emblem {
+  width: 64px;
+  height: 64px;
+  background: rgba(201, 168, 76, 0.15);
+  border: 2px solid var(--accent-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  font-size: 1.8rem;
+  box-shadow: 0 0 24px rgba(201, 168, 76, 0.5);
+  animation: crownPulse 1.5s infinite alternate;
+}
+@keyframes crownPulse {
+  from { transform: scale(1); box-shadow: 0 0 16px rgba(201, 168, 76, 0.3); }
+  to { transform: scale(1.08); box-shadow: 0 0 32px rgba(201, 168, 76, 0.7); }
+}
+
+.xp-counter-number {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--accent-gold);
+  text-shadow: 0 4px 20px rgba(201, 168, 76, 0.6);
+  line-height: 1;
+  margin-bottom: 0.5rem;
 }
 
 /* =============================================================================
@@ -1594,42 +2009,58 @@ footer {
     width: 100%;
   }
 
-  /* Tactile Playground */
-  .tactile-playground-card {
-    padding: 1.6rem 1.15rem;
-    margin: 2.75rem 0;
+  /* Mobile Deadbolt & Sandbox */
+  .deadbolt-section {
+    padding: 3rem 0.5rem;
   }
 
-  .tactile-playground-card h3 {
-    font-size: 1.5rem !important;
+  .deadbolt-container {
+    padding: 1.5rem 1rem;
   }
 
-  .button-strip {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
+  .deadbolt-track {
+    height: 58px;
     margin: 1.5rem 0 1rem;
   }
 
-  .button-strip .btn {
+  .deadbolt-knob {
+    width: 48px;
+    height: 48px;
+    font-size: 1.1rem;
+  }
+
+  .deadbolt-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
+
+  .sandbox-tab-bar {
+    gap: 0.45rem;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .sandbox-tab {
+    padding: 0.6rem 0.85rem;
+    font-size: 0.82rem;
+  }
+
+  .phone-mockup {
     width: 100%;
-    padding: 0.85rem 0.75rem;
-    font-size: 0.88rem;
+    max-width: 350px;
+    border-radius: 34px;
+    padding: 10px;
   }
 
-  /* Manifesto */
-  .manifesto-box {
-    padding: 1.5rem 1.2rem;
-    margin: 3rem 0;
+  .phone-screen {
+    min-height: 520px;
   }
 
-  .manifesto-quote {
-    font-size: 1.15rem;
-    line-height: 1.55;
+  .xp-modal-card {
+    padding: 2rem 1.25rem;
   }
 
-  .manifesto-author {
-    font-size: 0.8rem;
+  .xp-counter-number {
+    font-size: 3.2rem;
   }
 
   /* Footer */

@@ -7,14 +7,21 @@
   <meta name="description" content="A competitive discipline app. Daily protocols, verifiable photo proof, and zero-sum 1v1 duels.">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/jpeg" href="images/logo_3d_leather_red.jpg">
+  <script src="app.js" defer></script>
 </head>
 <body>
-  <!-- Announcement Bar -->
+  <!-- Top Ticker with Tactile Foley Audio Toggle -->
   <div class="top-ticker">
-    <div class="ticker-content">
-      <span class="beacon-dot"></span>
-      <span class="ticker-announcement">Closed Beta Now Open for Android &amp; iOS</span>
-      <a href="beta.html" class="ticker-link">Apply for Tester Access &rsaquo;</a>
+    <div class="ticker-content" style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <span class="beacon-dot"></span>
+        <span class="ticker-announcement">Closed Beta Now Open for Android &amp; iOS</span>
+        <a href="beta.html" class="ticker-link">Apply for Tester Access &rsaquo;</a>
+      </div>
+      <button id="sfx-toggle" class="sfx-toggle-pill" aria-label="Toggle Foley sound effects">
+        <span class="sfx-icon">&#128266;</span>
+        <span class="sfx-text">SFX ON</span>
+      </button>
     </div>
   </div>
 
@@ -30,14 +37,14 @@
           <span class="brand-sub">TACTICAL DISCIPLINE</span>
         </div>
       </a>
+
       <!-- Desktop Navigation -->
       <nav class="desktop-nav">
         <ul>
           <li><a href="index.html" class="active">Overview</a></li>
-          <li><a href="beta.html">Closed Beta</a></li>
-          <li><a href="privacy.html">Privacy</a></li>
-          <li><a href="terms.html">Terms</a></li>
-          <li><a href="delete-account.html">Account Deletion</a></li>
+          <li><a href="#sandbox">Sandbox</a></li>
+          <li><a href="#deadbolt">Deadbolt</a></li>
+          <li><a href="#modes">Modes</a></li>
           <li><a href="support.html">Support</a></li>
           <li><a href="beta.html" class="nav-cta-btn">Join Beta</a></li>
         </ul>
@@ -58,11 +65,13 @@
     <div class="mobile-drawer" id="mobile-drawer">
       <ul class="mobile-drawer-links">
         <li><a href="index.html" class="mobile-link active" onclick="toggleMobileMenu()">Overview</a></li>
+        <li><a href="#sandbox" class="mobile-link" onclick="toggleMobileMenu()">Interactive Sandbox</a></li>
+        <li><a href="#deadbolt" class="mobile-link" onclick="toggleMobileMenu()">Safety Deadbolt</a></li>
+        <li><a href="#modes" class="mobile-link" onclick="toggleMobileMenu()">Core Modes</a></li>
         <li><a href="beta.html" class="mobile-link" onclick="toggleMobileMenu()">Closed Beta</a></li>
         <li><a href="support.html" class="mobile-link" onclick="toggleMobileMenu()">Support &amp; FAQ</a></li>
         <li><a href="privacy.html" class="mobile-link" onclick="toggleMobileMenu()">Privacy Policy</a></li>
         <li><a href="terms.html" class="mobile-link" onclick="toggleMobileMenu()">Terms of Service</a></li>
-        <li><a href="delete-account.html" class="mobile-link" onclick="toggleMobileMenu()">Account Deletion</a></li>
         <li style="margin-top: 0.5rem;">
           <a href="beta.html" class="btn btn-red" style="width: 100%; text-align: center; padding: 0.85rem;">Join Closed Beta &rsaquo;</a>
         </li>
@@ -79,20 +88,19 @@
       <h1 class="hero-title">ECHELON</h1>
       <p class="hero-subtitle">PROOF OVER PROMISES</p>
       <p class="hero-description">
-        A competitive discipline app built around verifiable physical proof.
-        Execute daily protocols, defend your streak, and challenge rivals in zero-sum 1v1 duels.
+        Daily protocols. Unfakeable photo proof. Zero-sum 1v1 duels.
       </p>
 
       <div class="hero-actions">
         <a href="beta.html" class="btn btn-red">
-          <span>Enter The Arena</span>
+          <span>Enter Closed Beta</span>
           <span style="font-size: 1.2rem;">&rsaquo;</span>
         </a>
-        <a href="#modes" class="btn btn-gold">
-          <span>How It Works</span>
+        <a href="#sandbox" class="btn btn-gold">
+          <span>Test Drive Sandbox &darr;</span>
         </a>
-        <a href="#manifesto" class="btn btn-emboss">
-          <span>The Manifesto</span>
+        <a href="#deadbolt" class="btn btn-emboss">
+          <span>Safety Deadbolt &darr;</span>
         </a>
       </div>
 
@@ -107,117 +115,493 @@
         </div>
         <div class="telemetry-chip">
           <span class="chip-dot-green"></span>
-          <span>LIFE GOALS</span>
+          <span>SOLO PROTOCOLS</span>
         </div>
         <div class="telemetry-chip">
           <span class="chip-dot-gold"></span>
-          <span>RANKED LEADERBOARDS</span>
+          <span>ECHELON GOLD</span>
         </div>
       </div>
     </section>
 
-    <!-- Proof Engine & Phone Preview -->
-    <section class="showcase-section">
+    <!-- Interactive Hands-On Phone Sandbox -->
+    <section id="sandbox" class="sandbox-section">
       <div class="section-header">
-        <div class="section-tag">VERIFIABLE ACCOUNTABILITY</div>
-        <h2 class="section-title">THE PROOF ENGINE</h2>
+        <div class="section-tag">HANDS-ON SIMULATION</div>
+        <h2 class="section-title">THE ECHELON TEST DRIVE</h2>
         <p class="section-desc">
-          Checkboxes can be faked. Indisputable live camera proof cannot.
+          Tap tabs to switch operational modes. Test the live proof camera, rival duels, and daily protocols.
         </p>
       </div>
 
-      <div class="device-preview-container">
-        <!-- Phone Viewport Frame -->
+      <!-- 4-Quadrant Division Switcher Tabs -->
+      <div class="sandbox-tab-bar">
+        <button class="sandbox-tab active" data-mode="arena">
+          <span class="chip-dot-red"></span>
+          <span>01 &bull; ARENA</span>
+        </button>
+        <button class="sandbox-tab" data-mode="duels">
+          <span class="chip-dot-blue"></span>
+          <span>02 &bull; 1V1 DUELS</span>
+        </button>
+        <button class="sandbox-tab" data-mode="goals">
+          <span class="chip-dot-green"></span>
+          <span>03 &bull; LIFE GOALS</span>
+        </button>
+        <button class="sandbox-tab" data-mode="gold">
+          <span class="chip-dot-gold"></span>
+          <span>04 &bull; ECHELON GOLD</span>
+        </button>
+      </div>
+
+      <div class="sandbox-layout">
+        <!-- Interactive Playable Phone Mockup -->
         <div class="phone-mockup">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <div class="phone-header">
-              <span class="phone-title" style="color: var(--accent-red);">ARENA PROTOCOL 01</span>
-              <span class="phone-streak">&#128293; 42 DAYS</span>
+            <!-- Dynamic Status Bar -->
+            <div class="sim-status-bar">
+              <span id="sim-phone-clock">12:47</span>
+              <span>CADRE MESH &bull; 5G &#9644;&#9644; 100%</span>
             </div>
 
-            <!-- Optical Viewfinder Simulation -->
-            <div class="viewfinder-box">
-              <div class="viewfinder-corner tl"></div>
-              <div class="viewfinder-corner tr"></div>
-              <div class="viewfinder-corner bl"></div>
-              <div class="viewfinder-corner br"></div>
+            <!-- Optical Flash Overlay -->
+            <div class="camera-flash-overlay" id="sim-optical-flash"></div>
 
-              <div class="gesture-prompt">
-                GESTURE: TOUCH LEFT EAR &bull; 00:04
+            <!-- SCREEN 1: ARENA -->
+            <div class="phone-screen-view active" data-mode="arena" id="sim-screen-arena">
+              <!-- Arena Dashboard State -->
+              <div id="sim-arena-home" style="display: flex; flex-direction: column; gap: 0.85rem; flex: 1;">
+                <div class="phone-header">
+                  <span class="phone-title" style="color: var(--accent-red);">ARENA PROTOCOL 01</span>
+                  <span class="phone-streak">&#128293; 42 DAYS</span>
+                </div>
+
+                <div class="deboss-well" style="padding: 1.15rem 1rem; border-color: rgba(192, 57, 43, 0.4);">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+                    <span style="font-family: var(--font-display); font-size: 0.72rem; font-weight: 800; color: var(--accent-red); letter-spacing: 0.12em;">ACTIVE CHALLENGE</span>
+                    <span class="chip-dot-red"></span>
+                  </div>
+                  <h4 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 900; color: var(--text-primary); margin-bottom: 1rem;">
+                    30-DAY GRIND ARENA
+                  </h4>
+
+                  <div style="display: flex; justify-content: space-between; text-align: center; margin-bottom: 1rem;">
+                    <div>
+                      <div style="font-family: var(--font-display); font-size: 1.7rem; font-weight: 900; color: var(--accent-red); line-height: 1;">#1</div>
+                      <div style="font-size: 0.68rem; color: var(--text-secondary); font-weight: 700; text-transform: uppercase;">YOUR RANK</div>
+                    </div>
+                    <div style="width: 1px; height: 26px; background: rgba(255,255,255,0.1); align-self: center;"></div>
+                    <div>
+                      <div style="font-family: var(--font-display); font-size: 1.7rem; font-weight: 900; color: var(--accent-gold); line-height: 1;">1,250</div>
+                      <div style="font-size: 0.68rem; color: var(--text-secondary); font-weight: 700; text-transform: uppercase;">YOUR XP</div>
+                    </div>
+                    <div style="width: 1px; height: 26px; background: rgba(255,255,255,0.1); align-self: center;"></div>
+                    <div>
+                      <div style="font-family: var(--font-display); font-size: 1.7rem; font-weight: 900; color: var(--text-primary); line-height: 1;">9</div>
+                      <div style="font-size: 0.68rem; color: var(--text-secondary); font-weight: 700; text-transform: uppercase;">DAYS LEFT</div>
+                    </div>
+                  </div>
+
+                  <!-- Progress Bar -->
+                  <div style="height: 4px; background: #000; border-radius: 2px; overflow: hidden;">
+                    <div style="width: 70%; height: 100%; background: var(--accent-red);"></div>
+                  </div>
+                </div>
+
+                <div style="margin-top: auto;">
+                  <button class="btn btn-red" id="sim-log-trigger" style="width: 100%; padding: 0.95rem; font-size: 1.05rem; justify-content: center;">
+                    <span>&#9889; LOG TODAY'S PROOF</span>
+                  </button>
+                </div>
               </div>
 
-              <div style="text-align: center; color: rgba(255,255,255,0.3); font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.1em;">
-                [ LIVE CAMERA VIEW ]
-              </div>
+              <!-- Optical Viewfinder Simulation (Hidden until LOG TODAY clicked) -->
+              <div id="sim-viewfinder" style="display: none; flex-direction: column; gap: 0.75rem; flex: 1;">
+                <div class="phone-header">
+                  <span class="phone-title" style="color: var(--accent-red);">PROOF CAMERA</span>
+                  <span class="phone-streak" id="sim-gesture-timer">00:04</span>
+                </div>
 
-              <div class="camera-controls-row">
-                <span class="cam-switch-pill">&#8645; FLIP CAMERA</span>
-                <span class="watermark-text">#CADRE-01 &bull; 10:34 UTC</span>
+                <div class="viewfinder-box">
+                  <div class="viewfinder-corner tl"></div>
+                  <div class="viewfinder-corner tr"></div>
+                  <div class="viewfinder-corner bl"></div>
+                  <div class="viewfinder-corner br"></div>
+                  <div class="scanner-line"></div>
+
+                  <div class="gesture-prompt" id="sim-gesture-prompt">
+                    GESTURE: TWO FINGERS UP &#9996;&#65039;
+                  </div>
+
+                  <div style="text-align: center; color: rgba(255,255,255,0.35); font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.1em; z-index: 2;">
+                    [ OPTICAL RETICLE ENGAGED ]
+                  </div>
+
+                  <div class="camera-controls-row">
+                    <span class="cam-switch-pill">&#8645; FLIP CAM</span>
+                    <span class="watermark-text" id="sim-watermark">#CADRE-01 &bull; 10:34 UTC</span>
+                  </div>
+                </div>
+
+                <div class="deboss-well" style="padding: 0.55rem 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-family: var(--font-display); font-size: 0.78rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;">STATUS</span>
+                  <span id="sim-proof-status" class="sim-status-badge status-ready">READY TO SUBMIT</span>
+                </div>
+
+                <div style="display: flex; gap: 0.5rem; width: 100%; margin-top: auto;">
+                  <button class="btn btn-emboss" id="sim-cancel-proof" style="flex: 1; padding: 0.75rem; font-size: 0.85rem;">Cancel</button>
+                  <button class="btn btn-red" id="sim-shutter-btn" style="flex: 2; padding: 0.75rem; font-size: 0.95rem; justify-content: center;">
+                    &#128248; SNAP PROOF
+                  </button>
+                </div>
               </div>
             </div>
 
-            <div class="deboss-well" style="padding: 0.65rem 0.85rem; display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-family: var(--font-display); font-size: 0.8rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;">STATUS</span>
-              <span style="font-family: var(--font-display); font-size: 0.8rem; font-weight: 800; color: var(--accent-green); text-transform: uppercase;">READY TO SUBMIT</span>
+            <!-- SCREEN 2: 1V1 DUELS -->
+            <div class="phone-screen-view" data-mode="duels" id="sim-screen-duels">
+              <div class="phone-header">
+                <span class="phone-title" style="color: var(--accent-blue);">1V1 DUELS</span>
+                <span class="phone-streak" style="color: var(--accent-green);">&#9679; LIVE SYNC</span>
+              </div>
+
+              <div class="deboss-well" style="padding: 1.15rem 1rem; border-color: rgba(26, 95, 168, 0.4);">
+                <div style="text-align: center; margin-bottom: 0.85rem;">
+                  <span style="font-family: var(--font-display); font-size: 0.75rem; font-weight: 800; color: var(--accent-blue); letter-spacing: 0.12em; background: rgba(26, 95, 168, 0.15); padding: 0.25rem 0.65rem; border-radius: 4px;">
+                    DAY 12 OF 30 &bull; ZERO-SUM
+                  </span>
+                </div>
+
+                <!-- Combatants Row -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+                  <!-- User -->
+                  <div style="text-align: center; flex: 1;">
+                    <div class="sim-combatant-avatar red" style="margin: 0 auto 0.4rem;">Y</div>
+                    <div style="font-family: var(--font-display); font-size: 0.92rem; font-weight: 800; color: var(--text-primary);">YOU</div>
+                    <div style="font-family: var(--font-display); font-size: 0.8rem; font-weight: 800; color: var(--accent-gold);">1,250 XP</div>
+                  </div>
+
+                  <div style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 900; color: var(--accent-red); padding: 0 0.5rem;">
+                    VS
+                  </div>
+
+                  <!-- Rival -->
+                  <div style="text-align: center; flex: 1;">
+                    <div class="sim-combatant-avatar blue" style="margin: 0 auto 0.4rem;">I</div>
+                    <div style="font-family: var(--font-display); font-size: 0.92rem; font-weight: 800; color: var(--text-primary);">IRONSIDE_88</div>
+                    <div style="font-family: var(--font-display); font-size: 0.8rem; font-weight: 800; color: var(--accent-blue);">1,520 XP</div>
+                  </div>
+                </div>
+
+                <!-- Progress Tug-Of-War -->
+                <div style="margin-bottom: 0.6rem;">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.7rem; font-family: var(--font-display); font-weight: 700; color: var(--text-secondary); margin-bottom: 0.25rem;">
+                    <span>YOUR PROGRESS</span>
+                    <span style="color: var(--accent-gold);">85%</span>
+                  </div>
+                  <div style="height: 4px; background: #000; border-radius: 2px; overflow: hidden; margin-bottom: 0.65rem;">
+                    <div style="width: 85%; height: 100%; background: var(--accent-gold);"></div>
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; font-size: 0.7rem; font-family: var(--font-display); font-weight: 700; color: var(--text-secondary); margin-bottom: 0.25rem;">
+                    <span>RIVAL PROGRESS</span>
+                    <span style="color: var(--accent-blue);">78%</span>
+                  </div>
+                  <div style="height: 4px; background: #000; border-radius: 2px; overflow: hidden;">
+                    <div style="width: 78%; height: 100%; background: var(--accent-blue);"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Comms Chatter Box -->
+              <div class="deboss-well" style="padding: 0.65rem 0.85rem; font-size: 0.78rem; font-style: italic; color: var(--text-secondary);" id="sim-duel-last-msg">
+                &ldquo;IRONSIDE_88: Don't miss your morning session.&rdquo;
+              </div>
+
+              <div class="sim-radar-wave" id="sim-duel-radar-wave"></div>
+
+              <div style="margin-top: auto;">
+                <button class="btn btn-blue" id="sim-duel-challenge-btn" style="width: 100%; padding: 0.95rem; font-size: 0.98rem; justify-content: center;">
+                  ISSUE 1V1 CHALLENGE
+                </button>
+              </div>
             </div>
 
-            <button class="btn btn-red" style="padding: 0.75rem 1rem; font-size: 0.95rem; width: 100%;" onclick="alert('Proof Submitted: Verified')">
-              Capture &amp; Submit Proof
-            </button>
+            <!-- SCREEN 3: LIFE GOALS -->
+            <div class="phone-screen-view" data-mode="goals" id="sim-screen-goals">
+              <div class="phone-header">
+                <span class="phone-title" style="color: var(--accent-green);">SOLO PROTOCOLS</span>
+                <span class="phone-streak">&#128293; 14 DAYS</span>
+              </div>
+
+              <!-- Radial Progress Ring & Summary -->
+              <div style="display: flex; align-items: center; justify-content: center; gap: 1.25rem; padding: 0.5rem 0;">
+                <div style="position: relative; width: 80px; height: 80px;">
+                  <svg width="80" height="80" style="transform: rotate(-90deg);">
+                    <circle cx="40" cy="40" r="32" stroke="#222" stroke-width="6" fill="transparent"/>
+                    <circle id="sim-goal-progress-ring" cx="40" cy="40" r="32" stroke="var(--accent-green)" stroke-width="6" fill="transparent"
+                      stroke-dasharray="201" stroke-dashoffset="100" stroke-linecap="round" style="transition: stroke-dashoffset 0.4s ease;"/>
+                  </svg>
+                  <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.1rem; font-weight: 900; color: #fff;" id="sim-goal-percent">
+                    50%
+                  </div>
+                </div>
+                <div>
+                  <div style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 900; color: var(--text-primary);">DAILY DISCIPLINE</div>
+                  <div style="font-size: 0.78rem; color: var(--text-secondary);">Tap protocols to complete</div>
+                </div>
+              </div>
+
+              <!-- Interactive Checklist -->
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <div class="sim-goal-row">
+                  <div>
+                    <div style="font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; color: var(--text-primary);">05:30 AM Awakening</div>
+                    <div style="font-size: 0.7rem; color: var(--accent-gold); font-weight: 700;">+15 XP &bull; SLEEP TARGET</div>
+                  </div>
+                  <div class="sim-check-box checked">&#10003;</div>
+                </div>
+
+                <div class="sim-goal-row">
+                  <div>
+                    <div style="font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; color: var(--text-primary);">5 KM Road Run</div>
+                    <div style="font-size: 0.7rem; color: var(--accent-gold); font-weight: 700;">+25 XP &bull; CARDIO FOCUS</div>
+                  </div>
+                  <div class="sim-check-box checked">&#10003;</div>
+                </div>
+
+                <div class="sim-goal-row">
+                  <div>
+                    <div style="font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; color: var(--text-primary);">90-Min Deep Work</div>
+                    <div style="font-size: 0.7rem; color: var(--accent-gold); font-weight: 700;">+35 XP &bull; ZERO DISTRACTIONS</div>
+                  </div>
+                  <div class="sim-check-box"></div>
+                </div>
+
+                <div class="sim-goal-row">
+                  <div>
+                    <div style="font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; color: var(--text-primary);">Cold Plunge &amp; Hydration</div>
+                    <div style="font-size: 0.7rem; color: var(--accent-gold); font-weight: 700;">+20 XP &bull; RECOVERY</div>
+                  </div>
+                  <div class="sim-check-box"></div>
+                </div>
+              </div>
+
+              <div style="margin-top: auto;">
+                <button class="btn btn-green" style="width: 100%; padding: 0.85rem; font-size: 0.95rem; justify-content: center;" onclick="alert('Protocols synchronized with server.')">
+                  CONFIRM DAILY PROTOCOLS
+                </button>
+              </div>
+            </div>
+
+            <!-- SCREEN 4: ECHELON GOLD -->
+            <div class="phone-screen-view" data-mode="gold" id="sim-screen-gold">
+              <div class="phone-header">
+                <span class="phone-title" style="color: var(--accent-gold);">SOVEREIGN TIER</span>
+                <span class="phone-streak" style="color: var(--accent-gold);">&#128081; GOLD</span>
+              </div>
+
+              <div class="deboss-well" style="padding: 1.25rem 1rem; border-color: rgba(201, 168, 76, 0.45); text-align: center;">
+                <div style="display: inline-block; background: rgba(201, 168, 76, 0.15); border: 1px solid var(--accent-gold); border-radius: 4px; padding: 0.25rem 0.65rem; margin-bottom: 0.75rem;">
+                  <span style="font-family: var(--font-display); font-size: 0.75rem; font-weight: 800; color: var(--accent-gold); letter-spacing: 0.1em;">
+                    SLOT #47 OF 100 AVAILABLE
+                  </span>
+                </div>
+
+                <div style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; color: var(--text-primary); line-height: 1; margin-bottom: 0.25rem;">
+                  &#8377;6,499
+                </div>
+                <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 1.15rem;">
+                  / month &bull; Price locked for founding members
+                </div>
+
+                <div style="text-align: left; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.78rem; font-family: var(--font-display); font-weight: 700; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                  <div>&#10003; UNLIMITED SIMULTANEOUS 1V1 DUELS</div>
+                  <div>&#10003; PRIORITY BIOMETRIC PROOF VERIFICATION</div>
+                  <div>&#10003; EXCLUSIVE PRESTIGE EMBLEM &amp; CROWN BADGE</div>
+                  <div>&#10003; 24-HOUR AUTOMATIC AUDIT PURGE</div>
+                </div>
+              </div>
+
+              <div style="margin-top: auto;">
+                <a href="beta.html" class="btn btn-gold" style="width: 100%; padding: 0.95rem; font-size: 1rem; justify-content: center;">
+                  CLAIM PRESTIGE SLOT
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- How Proof Works -->
+        <!-- Right Side: Mode Telemetry & Interactive Guidance Pane -->
         <div class="showcase-details">
-          <div class="step-card" style="margin-bottom: 1rem;">
-            <div class="step-num">01</div>
-            <div class="step-body">
-              <h4>Live Camera Only</h4>
-              <p>No gallery imports. All proof is captured live through the camera inside your daily window.</p>
+          <!-- Pane 1: Arena Guidance -->
+          <div class="mode-detail-pane active" data-mode="arena">
+            <div class="step-card">
+              <div class="step-num" style="color: var(--accent-red);">01</div>
+              <div class="step-body">
+                <h4>Live Camera Only &bull; No Imports</h4>
+                <p>No camera roll uploads. All proof must be captured directly inside the active submission window.</p>
+              </div>
             </div>
+
+            <div class="step-card">
+              <div class="step-num" style="color: var(--accent-red);">02</div>
+              <div class="step-body">
+                <h4>Randomized Physical Gestures</h4>
+                <p>The app requests an unpredictable physical pose (e.g. <em>Touch left ear</em>) before capture to prevent pre-recorded submissions.</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num" style="color: var(--accent-red);">03</div>
+              <div class="step-body">
+                <h4>Cryptographic Watermark &bull; 24h Purge</h4>
+                <p>Your callsign and timestamp are burned into the photo payload, which is permanently purged from storage within 24 hours.</p>
+              </div>
+            </div>
+
+            <button class="btn btn-red" onclick="window.phoneSimulator.openViewfinder()" style="margin-top: 0.5rem; justify-content: center;">
+              <span>Test Camera Proof In Phone</span>
+              <span style="font-size: 1.1rem;">&rsaquo;</span>
+            </button>
           </div>
 
-          <div class="step-card" style="margin-bottom: 1rem;">
-            <div class="step-num">02</div>
-            <div class="step-body">
-              <h4>Randomized Gestures</h4>
-              <p>At capture, the app requests an unpredictable physical pose (e.g. <em>Touch left ear</em>). Prevents fake or recycled photos.</p>
+          <!-- Pane 2: Duels Guidance -->
+          <div class="mode-detail-pane" data-mode="duels">
+            <div class="step-card">
+              <div class="step-num" style="color: var(--accent-blue);">01</div>
+              <div class="step-body">
+                <h4>Head-to-Head Showdowns</h4>
+                <p>Challenge rivals to identical daily protocols. Compete across 30 days in zero-sum head-to-head combat.</p>
+              </div>
             </div>
+
+            <div class="step-card">
+              <div class="step-num" style="color: var(--accent-blue);">02</div>
+              <div class="step-body">
+                <h4>Real-Time Progress Synchronization</h4>
+                <p>Live progress tracking updates with verified daily submissions. Falling behind triggers penalty warnings.</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num" style="color: var(--accent-blue);">03</div>
+              <div class="step-body">
+                <h4>Zero-Sum Leaderboard Standing</h4>
+                <p>Duel victories award combatant standing and XP. Defeat or forfeiture drops your ranking.</p>
+              </div>
+            </div>
+
+            <button class="btn btn-blue" onclick="document.getElementById('sim-duel-challenge-btn').click()" style="margin-top: 0.5rem; justify-content: center;">
+              <span>Simulate Rival Duel Match</span>
+              <span style="font-size: 1.1rem;">&rsaquo;</span>
+            </button>
           </div>
 
-          <div class="step-card" style="margin-bottom: 1rem;">
-            <div class="step-num">03</div>
-            <div class="step-body">
-              <h4>Burned Watermark</h4>
-              <p>Your username and timestamp are burned directly into the photo payload.</p>
+          <!-- Pane 3: Goals Guidance -->
+          <div class="mode-detail-pane" data-mode="goals">
+            <div class="step-card">
+              <div class="step-num" style="color: var(--accent-green);">01</div>
+              <div class="step-body">
+                <h4>Personal Discipline Roadmaps</h4>
+                <p>Build custom daily routines across fitness, deep work, and habits without external competition.</p>
+              </div>
             </div>
+
+            <div class="step-card">
+              <div class="step-num" style="color: var(--accent-green);">02</div>
+              <div class="step-body">
+                <h4>Daily Streak Compounding</h4>
+                <p>Every unbroken day compounds your discipline score and unlocks higher tier arenas.</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num" style="color: var(--accent-green);">03</div>
+              <div class="step-body">
+                <h4>Tap To Complete</h4>
+                <p>Try tapping the protocol checkboxes inside the phone to see the streak progress ring update in real-time.</p>
+              </div>
+            </div>
+
+            <button class="btn btn-green" onclick="document.querySelectorAll('.sim-goal-row')[2].click()" style="margin-top: 0.5rem; justify-content: center;">
+              <span>Complete Deep Work Protocol</span>
+              <span style="font-size: 1.1rem;">&rsaquo;</span>
+            </button>
           </div>
 
-          <div class="step-card">
-            <div class="step-num">04</div>
-            <div class="step-body">
-              <h4>24-Hour Purge</h4>
-              <p>Accountability without permanent surveillance. All proof photos are permanently deleted within 24 hours.</p>
+          <!-- Pane 4: Gold Guidance -->
+          <div class="mode-detail-pane" data-mode="gold">
+            <div class="step-card">
+              <div class="step-num" style="color: var(--accent-gold);">01</div>
+              <div class="step-body">
+                <h4>Capped Sovereign Membership</h4>
+                <p>Strictly capped at 100 concurrent founding member slots. Price locked for active holders.</p>
+              </div>
             </div>
+
+            <div class="step-card">
+              <div class="step-num" style="color: var(--accent-gold);">02</div>
+              <div class="step-body">
+                <h4>Unlimited Concurrent Duels</h4>
+                <p>Compete across unlimited simultaneous division duels with priority verification routing.</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num" style="color: var(--accent-gold);">03</div>
+              <div class="step-body">
+                <h4>Founder Crown Badge</h4>
+                <p>Exclusive gold badge styling across all leaderboards and public duel challenges.</p>
+              </div>
+            </div>
+
+            <a href="beta.html" class="btn btn-gold" style="margin-top: 0.5rem; justify-content: center;">
+              <span>Join Founder Waitlist</span>
+              <span style="font-size: 1.1rem;">&rsaquo;</span>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Core Modes -->
+    <!-- Mechanical "Safety Deadbolt" Slide-to-Confirm Section -->
+    <section id="deadbolt" class="deadbolt-section">
+      <div class="section-tag" style="color: var(--accent-red);">PHYSICAL LOCKING MECHANISM</div>
+      <h2 style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-primary); margin-bottom: 0.75rem;">
+        THE SAFETY DEADBOLT
+      </h2>
+      <p style="color: var(--text-secondary); max-width: 580px; margin: 0 auto 1.5rem; font-size: 1.05rem;">
+        Drag the heavy mechanical deadbolt to confirm commitment and unlock your Closed Beta tester pass.
+      </p>
+
+      <div class="deadbolt-container">
+        <div class="deadbolt-track" id="deadbolt-track">
+          <div class="deadbolt-fill" id="deadbolt-fill"></div>
+          <div class="deadbolt-label" id="deadbolt-label">SLIDE TO ENTER THE ARENA &rsaquo;</div>
+          <div class="deadbolt-knob" id="deadbolt-knob">&#187;</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-display); font-size: 0.78rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase;">
+          <span>RATCHETING ESCAPEMENT TICKS</span>
+          <span>ELECTROMAGNETIC SOLENOID LATCH</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Modes Grid (with 3D Gyroscopic Tilt) -->
     <section id="modes" class="showcase-section">
       <div class="section-header">
-        <div class="section-tag">CORE MODES</div>
+        <div class="section-tag">CORE DIVISIONS</div>
         <h2 class="section-title">HOW ECHELON WORKS</h2>
         <p class="section-desc">
-          Four distinct environments built for daily consistency and competition.
+          Four distinct environments built for daily consistency and competition. Click any card to launch it in the sandbox.
         </p>
       </div>
 
       <div class="quadrant-grid">
         <!-- Mode 1: Arena (Red) -->
-        <div class="q-card q-card-red">
+        <div class="q-card q-card-red" data-mode="arena">
           <div class="q-badge">
             <span class="chip-dot-red"></span>
             <span>MODE 01 &bull; ARENA</span>
@@ -236,7 +620,7 @@
         </div>
 
         <!-- Mode 2: 1v1 Duels (Blue) -->
-        <div class="q-card q-card-blue">
+        <div class="q-card q-card-blue" data-mode="duels">
           <div class="q-badge">
             <span class="chip-dot-blue"></span>
             <span>MODE 02 &bull; 1V1 DUELS</span>
@@ -255,7 +639,7 @@
         </div>
 
         <!-- Mode 3: Life Goals (Green) -->
-        <div class="q-card q-card-green">
+        <div class="q-card q-card-green" data-mode="goals">
           <div class="q-badge">
             <span class="chip-dot-green"></span>
             <span>MODE 03 &bull; LIFE GOALS</span>
@@ -274,7 +658,7 @@
         </div>
 
         <!-- Mode 4: Echelon Gold (Gold) -->
-        <div class="q-card q-card-gold">
+        <div class="q-card q-card-gold" data-mode="gold">
           <div class="q-badge">
             <span class="chip-dot-gold"></span>
             <span>MODE 04 &bull; PRESTIGE</span>
@@ -292,44 +676,6 @@
           </a>
         </div>
       </div>
-    </section>
-
-    <!-- Interactive Controls -->
-    <div class="tactile-playground-card">
-      <div class="section-tag" style="color: var(--accent-gold);">OPERATIONAL DIVISIONS</div>
-      <h3 style="font-family: var(--font-display); font-size: 2rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-primary); margin-bottom: 0.75rem;">
-        FOUR DIVISIONS. ONE STANDARD.
-      </h3>
-      <p style="color: var(--text-secondary); max-width: 620px; margin: 0 auto 1.5rem; font-size: 1.05rem;">
-        Every action in Echelon is tangible and deliberate. Select an action:
-      </p>
-
-      <div class="button-strip">
-        <button class="btn btn-red" onclick="triggerPlayground(this, 'ARENA // ELIMINATION PROTOCOL ACTIVE')">
-          <span>Arena</span>
-        </button>
-        <button class="btn btn-blue" onclick="triggerPlayground(this, 'DUELS // 1V1 CHALLENGE ISSUED')">
-          <span>1v1 Duels</span>
-        </button>
-        <button class="btn btn-green" onclick="triggerPlayground(this, 'GOALS // DAILY PROTOCOL RECORDED')">
-          <span>Life Goals</span>
-        </button>
-        <button class="btn btn-gold" onclick="triggerPlayground(this, 'SOVEREIGN // PRESTIGE TIER UNLOCKED')">
-          <span>Sovereign Tier</span>
-        </button>
-      </div>
-
-      <div id="playground-status" class="deboss-well" style="max-width: 440px; margin: 1.5rem auto 0; font-family: var(--font-display); font-size: 0.95rem; font-weight: 800; color: var(--text-primary); letter-spacing: 0.12em; text-transform: uppercase;">
-        SELECT AN ACTION
-      </div>
-    </div>
-
-    <!-- Manifesto Quote -->
-    <section id="manifesto" class="manifesto-box">
-      <p class="manifesto-quote">
-        &ldquo;Most habit apps celebrate attendance instead of performance. ECHELON is built for individuals who understand that without verification, accountability is meaningless.&rdquo;
-      </p>
-      <div class="manifesto-author">&mdash; The Echelon Manifesto</div>
     </section>
 
     <!-- Closed Beta Invitation CTA -->
@@ -351,6 +697,31 @@
       </div>
     </section>
   </main>
+
+  <!-- App-Grade XP Celebration Modal Overlay -->
+  <div class="xp-modal" id="xp-modal">
+    <canvas id="xp-confetti-canvas"></canvas>
+    <div class="xp-modal-card">
+      <div class="xp-crown-emblem">&#128081;</div>
+      <div id="xp-tier-label" style="font-family: var(--font-display); font-size: 0.85rem; font-weight: 800; color: var(--accent-gold); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem;">
+        ARENA PROTOCOL 01
+      </div>
+      <h2 id="xp-modal-title" style="font-family: var(--font-display); font-size: 1.85rem; font-weight: 900; color: #fff; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.75rem;">
+        PROTOCOL CONFIRMED
+      </h2>
+      <div class="xp-counter-number" id="xp-animated-counter">+50 XP</div>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem;">
+        Indisputable proof verified. Your standing in the Cadre has advanced.
+      </p>
+
+      <a href="beta.html" class="btn btn-gold" style="width: 100%; justify-content: center; padding: 1.1rem; font-size: 1.05rem; margin-bottom: 0.75rem;">
+        CLAIM CALLSIGN &amp; JOIN CLOSED BETA &rsaquo;
+      </a>
+      <button class="btn btn-emboss" id="xp-dismiss-btn" style="width: 100%; justify-content: center; padding: 0.85rem; font-size: 0.92rem;">
+        RETURN TO ARENA
+      </button>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -397,17 +768,6 @@
       const btn = document.getElementById('menu-toggle');
       drawer.classList.toggle('is-open');
       btn.classList.toggle('is-active');
-    }
-
-    function triggerPlayground(btn, message) {
-      const statusEl = document.getElementById('playground-status');
-      statusEl.textContent = 'ENGAGED: ' + message;
-      statusEl.style.color = '#F7F2E8';
-      statusEl.style.borderColor = 'rgba(255,255,255,0.3)';
-      setTimeout(() => {
-        statusEl.style.color = 'var(--text-secondary)';
-        statusEl.style.borderColor = 'rgba(0,0,0,0.7)';
-      }, 1500);
     }
   </script>
 </body>
