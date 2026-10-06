@@ -18,7 +18,7 @@
         <span class="ticker-announcement">Closed Beta Now Open for Android &amp; iOS</span>
         <a href="beta.html" class="ticker-link">Apply for Tester Access &rsaquo;</a>
       </div>
-      <button id="sfx-toggle" class="sfx-toggle-pill" aria-label="Toggle Foley sound effects">
+      <button id="sfx-toggle" class="sfx-toggle-pill" aria-label="Toggle sound effects">
         <svg class="sfx-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
         <span class="sfx-text">SFX ON</span>
       </button>
@@ -34,7 +34,7 @@
         </div>
         <div class="brand-info">
           <span class="brand-text">ECHELON</span>
-          <span class="brand-sub">TACTICAL DISCIPLINE</span>
+          <span class="brand-sub">DISCIPLINE</span>
         </div>
       </a>
 
@@ -43,7 +43,7 @@
         <ul>
           <li><a href="index.html" class="active">Overview</a></li>
           <li><a href="#sandbox">Sandbox</a></li>
-          <li><a href="#deadbolt">Deadbolt</a></li>
+          <li><a href="#join-slider">Join Beta</a></li>
           <li><a href="#modes">Modes</a></li>
           <li><a href="support.html">Support</a></li>
           <li><a href="beta.html" class="nav-cta-btn">Join Beta</a></li>
@@ -66,7 +66,7 @@
       <ul class="mobile-drawer-links">
         <li><a href="index.html" class="mobile-link active" onclick="toggleMobileMenu()">Overview</a></li>
         <li><a href="#sandbox" class="mobile-link" onclick="toggleMobileMenu()">Interactive Sandbox</a></li>
-        <li><a href="#deadbolt" class="mobile-link" onclick="toggleMobileMenu()">Safety Deadbolt</a></li>
+        <li><a href="#join-slider" class="mobile-link" onclick="toggleMobileMenu()">Join Beta</a></li>
         <li><a href="#modes" class="mobile-link" onclick="toggleMobileMenu()">Core Modes</a></li>
         <li><a href="beta.html" class="mobile-link" onclick="toggleMobileMenu()">Closed Beta</a></li>
         <li><a href="support.html" class="mobile-link" onclick="toggleMobileMenu()">Support &amp; FAQ</a></li>
@@ -98,8 +98,8 @@
         <a href="#sandbox" class="btn btn-gold">
           <span>Test Drive Sandbox &darr;</span>
         </a>
-        <a href="#deadbolt" class="btn btn-emboss">
-          <span>Safety Deadbolt &darr;</span>
+        <a href="#join-slider" class="btn btn-emboss">
+          <span>Slide to Join &darr;</span>
         </a>
       </div>
 
@@ -161,7 +161,7 @@
             <!-- Dynamic Status Bar -->
             <div class="sim-status-bar">
               <span id="sim-phone-clock">12:47</span>
-              <span>CADRE MESH &bull; 5G &#9644;&#9644; 100%</span>
+              <span>ECHELON &bull; 5G &#9644;&#9644; 100%</span>
             </div>
 
             <!-- Optical Flash Overlay -->
@@ -234,12 +234,12 @@
                   </div>
 
                   <div style="text-align: center; color: rgba(255,255,255,0.35); font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.1em; z-index: 2;">
-                    [ OPTICAL RETICLE ENGAGED ]
+                    [ ALIGN PROOF IN FRAME ]
                   </div>
 
                   <div class="camera-controls-row">
                     <span class="cam-switch-pill">FLIP CAM</span>
-                    <span class="watermark-text" id="sim-watermark">#CADRE-01 &bull; 10:34 UTC</span>
+                    <span class="watermark-text" id="sim-watermark">#01 &bull; 10:34 UTC</span>
                   </div>
                 </div>
 
@@ -399,7 +399,7 @@
             <!-- SCREEN 4: ECHELON GOLD -->
             <div class="phone-screen-view" data-mode="gold" id="sim-screen-gold">
               <div class="phone-header">
-                <span class="phone-title" style="color: var(--accent-gold);">SOVEREIGN TIER</span>
+                <span class="phone-title" style="color: var(--accent-gold);">ECHELON GOLD</span>
                 <span class="phone-streak" style="color: var(--accent-gold);">GOLD</span>
               </div>
 
@@ -419,7 +419,7 @@
 
                 <div style="text-align: left; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.78rem; font-family: var(--font-display); font-weight: 700; color: var(--text-secondary); margin-bottom: 0.5rem;">
                   <div><span style="color: var(--accent-gold); margin-right: 6px;">[01]</span> UNLIMITED SIMULTANEOUS 1V1 DUELS</div>
-                  <div><span style="color: var(--accent-gold); margin-right: 6px;">[02]</span> PRIORITY BIOMETRIC PROOF VERIFICATION</div>
+                  <div><span style="color: var(--accent-gold); margin-right: 6px;">[02]</span> PRIORITY PROOF VERIFICATION</div>
                   <div><span style="color: var(--accent-gold); margin-right: 6px;">[03]</span> EXCLUSIVE PRESTIGE EMBLEM &amp; CROWN BADGE</div>
                   <div><span style="color: var(--accent-gold); margin-right: 6px;">[04]</span> 24-HOUR AUTOMATIC AUDIT PURGE</div>
                 </div>
@@ -457,8 +457,8 @@
             <div class="step-card">
               <div class="step-num" style="color: var(--accent-red);">03</div>
               <div class="step-body">
-                <h4>Cryptographic Watermark &bull; 24h Purge</h4>
-                <p>Your callsign and timestamp are burned into the photo payload, which is permanently purged from storage within 24 hours.</p>
+                <h4>Timestamp Stamp &bull; 24h Purge</h4>
+                <p>Your username and timestamp are stamped onto the photo, and submissions are automatically deleted within 24 hours.</p>
               </div>
             </div>
 
@@ -537,7 +537,7 @@
             <div class="step-card">
               <div class="step-num" style="color: var(--accent-gold);">01</div>
               <div class="step-body">
-                <h4>Capped Sovereign Membership</h4>
+                <h4>Capped Founding Membership</h4>
                 <p>Strictly capped at 100 concurrent founding member slots. Price locked for active holders.</p>
               </div>
             </div>
@@ -567,26 +567,21 @@
       </div>
     </section>
 
-    <!-- Mechanical "Safety Deadbolt" Slide-to-Confirm Section -->
-    <section id="deadbolt" class="deadbolt-section">
-      <div class="section-tag" style="color: var(--accent-red);">PHYSICAL LOCKING MECHANISM</div>
+    <!-- Slide-to-Confirm Section -->
+    <section id="join-slider" class="deadbolt-section">
+      <div class="section-tag" style="color: var(--accent-red);">EARLY ACCESS</div>
       <h2 style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-primary); margin-bottom: 0.75rem;">
-        THE SAFETY DEADBOLT
+        SLIDE TO JOIN CLOSED BETA
       </h2>
       <p style="color: var(--text-secondary); max-width: 580px; margin: 0 auto 1.5rem; font-size: 1.05rem;">
-        Drag the heavy mechanical deadbolt to confirm commitment and unlock your Closed Beta tester pass.
+        Drag the slider to request your Closed Beta invite.
       </p>
 
       <div class="deadbolt-container">
         <div class="deadbolt-track" id="deadbolt-track">
           <div class="deadbolt-fill" id="deadbolt-fill"></div>
-          <div class="deadbolt-label" id="deadbolt-label">SLIDE TO ENTER THE ARENA &rsaquo;</div>
+          <div class="deadbolt-label" id="deadbolt-label">SLIDE TO ENTER &rsaquo;</div>
           <div class="deadbolt-knob" id="deadbolt-knob">&#187;</div>
-        </div>
-
-        <div style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-display); font-size: 0.78rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase;">
-          <span>RATCHETING ESCAPEMENT TICKS</span>
-          <span>ELECTROMAGNETIC SOLENOID LATCH</span>
         </div>
       </div>
     </section>
@@ -687,7 +682,7 @@
         READY TO TEST ECHELON?
       </h2>
       <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 2.5rem; font-size: 1.1rem;">
-        Join our closed beta cohort on Android and iOS. Test the proof engine and challenge rivals.
+        Join our closed beta on Android and iOS. Test the proof engine and challenge rivals.
       </p>
       <div style="display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap;">
         <a href="beta.html" class="btn btn-red" style="padding: 1.1rem 2.5rem; font-size: 1.1rem;">
@@ -715,11 +710,11 @@
       </h2>
       <div class="xp-counter-number" id="xp-animated-counter">+50 XP</div>
       <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem;">
-        Indisputable proof verified. Your standing in the Cadre has advanced.
+        Proof verified. Your ranking has advanced.
       </p>
 
       <a href="beta.html" class="btn btn-gold" style="width: 100%; justify-content: center; padding: 1.1rem; font-size: 1.05rem; margin-bottom: 0.75rem;">
-        CLAIM CALLSIGN &amp; JOIN CLOSED BETA &rsaquo;
+        JOIN CLOSED BETA &rsaquo;
       </a>
       <button class="btn btn-emboss" id="xp-dismiss-btn" style="width: 100%; justify-content: center; padding: 0.85rem; font-size: 0.92rem;">
         RETURN TO ARENA

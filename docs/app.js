@@ -1,15 +1,14 @@
 /**
- * ECHELON — Tactile Interaction & Foley Audio Engine
+ * ECHELON — Interactive Audio & Sandbox Runtime
  * Official interactive runtime for Echelon web portal.
- * Provides app-grade micro-interactions, mechanical foley sound FX,
- * live phone simulator sandbox, optical proof capture, and safety deadbolt.
+ * Provides phone simulator sandbox, camera proof simulation, and slide-to-confirm widget.
  */
 
 (function () {
   'use strict';
 
   // =========================================================================
-  // 1. FOLEY ACOUSTIC ENGINE (App-matched WAV synthesis & playback)
+  // 1. SOUND EFFECTS ENGINE
   // =========================================================================
   class FoleyEngine {
     constructor() {
@@ -99,7 +98,7 @@
 
     playTick() {
       const now = performance.now();
-      if (now - this.lastTickTime < 45) return; // Throttle escapement clicks
+      if (now - this.lastTickTime < 45) return; // Throttle tick clicks
       this.lastTickTime = now;
       this.play('tick', 0.65);
     }
@@ -188,7 +187,7 @@
       }
     }
 
-    show(amount = 50, title = 'PROTOCOL CONFIRMED', tier = 'ROOKIE // CADRE-01') {
+    show(amount = 50, title = 'PROTOCOL CONFIRMED', tier = 'ROOKIE') {
       if (!this.modal) return;
       this.activeXp = amount;
       if (this.tierLabel) this.tierLabel.textContent = tier;
@@ -485,7 +484,7 @@
       if (watermark) {
         const now = new Date();
         const timeStr = now.toISOString().slice(11, 19);
-        watermark.textContent = `#CADRE-01 · ${timeStr} UTC`;
+        watermark.textContent = `#01 · ${timeStr} UTC`;
       }
     }
 
@@ -513,11 +512,11 @@
         setTimeout(() => flash.classList.remove('flash-active'), 250);
       }
 
-      // 3. Stamping cryptographic checksum
+      // 3. Stamping verification
       const watermark = document.getElementById('sim-watermark');
       if (watermark) {
         const hash = Math.random().toString(16).substring(2, 8).toUpperCase();
-        watermark.textContent = `#CADRE-01 · VERIFIED · SIG:${hash}`;
+        watermark.textContent = `#01 · VERIFIED · ${hash}`;
       }
 
       const statusBadge = document.getElementById('sim-proof-status');
@@ -610,7 +609,7 @@
   }
 
   // =========================================================================
-  // 4. MECHANICAL SAFETY DEADBOLT SLIDE-TO-CONFIRM
+  // 4. SLIDE-TO-CONFIRM WIDGET
   // =========================================================================
   class DeadboltSlider {
     constructor() {
@@ -665,10 +664,10 @@
 
         if (this.label) {
           if (this.currentX / this.maxDrag > 0.8) {
-            this.label.textContent = 'RELEASE TO ENGAGE DEADBOLT';
+            this.label.textContent = 'RELEASE TO CONFIRM';
             this.label.style.opacity = '1';
           } else {
-            this.label.textContent = 'SLIDE TO ENTER THE ARENA';
+            this.label.textContent = 'SLIDE TO ENTER';
             this.label.style.opacity = '0.7';
           }
         }
@@ -691,7 +690,7 @@
             this.fill.style.transition = 'width 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2)';
             this.fill.style.width = '0%';
           }
-          if (this.label) this.label.textContent = 'SLIDE TO ENTER THE ARENA';
+          if (this.label) this.label.textContent = 'SLIDE TO ENTER';
           setTimeout(() => {
             this.knob.style.transition = '';
             if (this.fill) this.fill.style.transition = '';
@@ -717,17 +716,16 @@
 
       this.track.classList.add('confirmed');
       if (this.label) {
-        this.label.textContent = 'ACCESS GRANTED // DEADBOLT LOCKED';
+        this.label.textContent = 'INVITE REQUESTED';
         this.label.style.color = 'var(--text-primary)';
       }
 
-      // 1. Play heavy deadbolt latch & electromagnetic solenoid slam
       foley.playLatch();
       setTimeout(() => foley.playSolenoid(), 80);
 
-      // 2. Trigger Celebration modal (+100 XP) and route to beta access
+      // Trigger Celebration modal
       setTimeout(() => {
-        celebration.show(100, 'DEADBOLT LATCHED · ACCESS GRANTED', 'BETA COHORT TESTER');
+        celebration.show(100, 'INVITE REQUESTED', 'CLOSED BETA');
       }, 400);
     }
   }
