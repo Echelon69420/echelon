@@ -253,26 +253,29 @@ nav a.active::after {
   box-shadow: 0 0 8px var(--accent-red);
 }
 
-.nav-cta-btn {
+.nav-cta-btn,
+a.nav-cta-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   padding: 0.5rem 1.1rem;
   background: var(--accent-red);
-  color: var(--text-primary);
+  color: #FFFFFF !important;
   font-family: var(--font-display);
   font-size: 0.88rem;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  text-decoration: none;
+  text-decoration: none !important;
   border-radius: var(--radius-chip);
   box-shadow: 0 3px 10px rgba(192, 57, 43, 0.4), inset 0 1px 0 rgba(255,255,255,0.25);
   transition: all 0.15s ease;
 }
 
-.nav-cta-btn:hover {
+.nav-cta-btn:hover,
+a.nav-cta-btn:hover {
   background: #d44637;
+  color: #FFFFFF !important;
   transform: translateY(-1px);
   box-shadow: 0 5px 16px rgba(192, 57, 43, 0.6);
 }
@@ -291,7 +294,9 @@ main {
 /* =============================================================================
    THE ICONIC PHYSICAL TACTILE BUTTON SYSTEM
    ============================================================================= */
-.btn {
+.btn,
+a.btn,
+button.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -305,33 +310,57 @@ main {
   padding: 0.95rem 2.1rem;
   border: none;
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: none !important;
   user-select: none;
   position: relative;
   transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.15s ease, filter 0.15s ease;
   outline: none;
+  line-height: 1.2;
+}
+
+.btn span,
+a.btn span,
+button.btn span {
+  color: inherit !important;
+}
+
+.btn:disabled,
+button.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+  filter: grayscale(0.2);
 }
 
 /* RED BUTTON: Arena / Urgency / Primary Action */
-.btn-red {
+.btn-red,
+a.btn-red,
+button.btn-red {
   background: var(--accent-red);
-  color: var(--text-primary);
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   box-shadow: 
     0 6px 18px var(--accent-red-glow),
     inset 0 1px 0 rgba(255, 255, 255, 0.25),
     inset 0 -2px 0 rgba(0, 0, 0, 0.35);
 }
 
-.btn-red:hover {
+.btn-red:hover,
+a.btn-red:hover,
+button.btn-red:hover {
   background: #d44637;
+  color: #FFFFFF !important;
   transform: translateY(-2px);
   box-shadow: 
     0 8px 26px rgba(192, 57, 43, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
-.btn-red:active {
+.btn-red:active,
+a.btn-red:active,
+button.btn-red:active {
   background: var(--accent-red-pressed);
+  color: #FFFFFF !important;
   transform: translateY(2px);
   box-shadow: 
     inset 0 3px 8px rgba(0, 0, 0, 0.7),
@@ -339,99 +368,134 @@ main {
 }
 
 /* GREEN BUTTON: Life Goals / Solo Protocols */
-.btn-green {
+.btn-green,
+a.btn-green,
+button.btn-green {
   background: var(--accent-green);
-  color: var(--text-primary);
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   box-shadow: 
     0 6px 18px var(--accent-green-glow),
     inset 0 1px 0 rgba(255, 255, 255, 0.25),
     inset 0 -2px 0 rgba(0, 0, 0, 0.35);
 }
 
-.btn-green:hover {
+.btn-green:hover,
+a.btn-green:hover,
+button.btn-green:hover {
   background: #2ebd67;
+  color: #FFFFFF !important;
   transform: translateY(-2px);
   box-shadow: 
     0 8px 26px rgba(39, 174, 96, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
-.btn-green:active {
+.btn-green:active,
+a.btn-green:active,
+button.btn-green:active {
   background: var(--accent-green-pressed);
+  color: #FFFFFF !important;
   transform: translateY(2px);
   box-shadow: 
     inset 0 3px 8px rgba(0, 0, 0, 0.7);
 }
 
 /* GOLD BUTTON: Black Tier / Prestige / Founders */
-.btn-gold {
+.btn-gold,
+a.btn-gold,
+button.btn-gold {
   background: var(--accent-gold);
-  color: var(--text-dark);
+  color: #111111 !important; /* Obsidian Black for supreme contrast on warm gold */
   font-weight: 900;
+  text-shadow: none !important;
   box-shadow: 
     0 6px 18px var(--accent-gold-glow),
     inset 0 1px 0 rgba(255, 255, 255, 0.45),
     inset 0 -2px 0 rgba(0, 0, 0, 0.25);
 }
 
-.btn-gold:hover {
+.btn-gold:hover,
+a.btn-gold:hover,
+button.btn-gold:hover {
   background: #d8b85b;
+  color: #0A0A0A !important;
   transform: translateY(-2px);
   box-shadow: 
     0 8px 26px rgba(201, 168, 76, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
-.btn-gold:active {
+.btn-gold:active,
+a.btn-gold:active,
+button.btn-gold:active {
   background: var(--accent-gold-pressed);
+  color: #0A0A0A !important;
   transform: translateY(2px);
   box-shadow: 
     inset 0 3px 8px rgba(0, 0, 0, 0.6);
 }
 
 /* BLUE BUTTON: 1v1 Duels / Rivalries */
-.btn-blue {
+.btn-blue,
+a.btn-blue,
+button.btn-blue {
   background: var(--accent-blue);
-  color: var(--text-primary);
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   box-shadow: 
     0 6px 18px var(--accent-blue-glow),
     inset 0 1px 0 rgba(255, 255, 255, 0.25),
     inset 0 -2px 0 rgba(0, 0, 0, 0.35);
 }
 
-.btn-blue:hover {
+.btn-blue:hover,
+a.btn-blue:hover,
+button.btn-blue:hover {
   background: #2072c4;
+  color: #FFFFFF !important;
   transform: translateY(-2px);
   box-shadow: 
     0 8px 26px rgba(26, 95, 168, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
-.btn-blue:active {
+.btn-blue:active,
+a.btn-blue:active,
+button.btn-blue:active {
   background: var(--accent-blue-pressed);
+  color: #FFFFFF !important;
   transform: translateY(2px);
   box-shadow: 
     inset 0 3px 8px rgba(0, 0, 0, 0.7);
 }
 
 /* EMBOSSED NEOMORPHIC GHOST BUTTON */
-.btn-emboss {
+.btn-emboss,
+a.btn-emboss,
+button.btn-emboss {
   background: var(--bg-surface);
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   border: 1px solid var(--border-subtle);
   box-shadow: 
     0 4px 12px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 var(--border-top-highlight);
 }
 
-.btn-emboss:hover {
+.btn-emboss:hover,
+a.btn-emboss:hover,
+button.btn-emboss:hover {
   background: var(--bg-surface-hover);
+  color: #FFFFFF !important;
   border-color: rgba(255, 255, 255, 0.16);
   transform: translateY(-2px);
 }
 
-.btn-emboss:active {
+.btn-emboss:active,
+a.btn-emboss:active,
+button.btn-emboss:active {
   background: var(--bg-deboss);
+  color: var(--text-primary) !important;
   transform: translateY(2px);
   box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.8);
 }
@@ -790,31 +854,31 @@ main {
 }
 
 .q-tab.active-red {
-  background: rgba(192, 57, 43, 0.15);
+  background: rgba(192, 57, 43, 0.22);
   border-color: var(--accent-red);
-  color: var(--accent-red);
-  box-shadow: 0 0 16px rgba(192, 57, 43, 0.3);
+  color: var(--text-primary);
+  box-shadow: 0 0 16px rgba(192, 57, 43, 0.4);
 }
 
 .q-tab.active-blue {
-  background: rgba(26, 95, 168, 0.15);
+  background: rgba(26, 95, 168, 0.22);
   border-color: var(--accent-blue);
-  color: var(--accent-blue);
-  box-shadow: 0 0 16px rgba(26, 95, 168, 0.3);
+  color: var(--text-primary);
+  box-shadow: 0 0 16px rgba(26, 95, 168, 0.4);
 }
 
 .q-tab.active-green {
-  background: rgba(39, 174, 96, 0.15);
+  background: rgba(39, 174, 96, 0.22);
   border-color: var(--accent-green);
-  color: var(--accent-green);
-  box-shadow: 0 0 16px rgba(39, 174, 96, 0.3);
+  color: var(--text-primary);
+  box-shadow: 0 0 16px rgba(39, 174, 96, 0.4);
 }
 
 .q-tab.active-gold {
-  background: rgba(201, 168, 76, 0.15);
+  background: rgba(201, 168, 76, 0.22);
   border-color: var(--accent-gold);
-  color: var(--accent-gold);
-  box-shadow: 0 0 16px rgba(201, 168, 76, 0.3);
+  color: var(--text-primary);
+  box-shadow: 0 0 16px rgba(201, 168, 76, 0.4);
 }
 
 .quadrant-grid {
@@ -862,6 +926,7 @@ main {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   margin-bottom: 1rem;
+  color: var(--text-primary);
 }
 
 .q-title {
@@ -1013,14 +1078,14 @@ main {
   color: var(--text-primary);
 }
 
-.legal-content a {
+.legal-content a:not(.btn) {
   color: var(--accent-red);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s ease;
 }
 
-.legal-content a:hover {
+.legal-content a:not(.btn):hover {
   color: #e74c3c;
   text-decoration: underline;
 }
