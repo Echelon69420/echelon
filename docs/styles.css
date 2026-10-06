@@ -28,7 +28,7 @@
   --accent-green-pressed: #1F8A4C;
   --accent-green-glow: rgba(39, 174, 96, 0.45);
   
-  --accent-gold: #C9A84C;        /* Black Tier / Prestige / XP / Founder */
+  --accent-gold: #C9A84C;        /* Echelon Gold / Prestige / XP / Founder */
   --accent-gold-pressed: #A8883C;
   --accent-gold-glow: rgba(201, 168, 76, 0.45);
   
@@ -401,7 +401,7 @@ button.btn-green:active {
     inset 0 3px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* GOLD BUTTON: Black Tier / Prestige / Founders */
+/* GOLD BUTTON: Echelon Gold / Prestige / Founders */
 .btn-gold,
 a.btn-gold,
 button.btn-gold {
